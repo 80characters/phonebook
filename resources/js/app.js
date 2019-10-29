@@ -1,15 +1,12 @@
 var Ractive = require('ractive').default;
-var mustache = require('./template/hello.mustache').default;
+var header = require('./components/header');
 
 new Ractive({
     target: '#target',
-    template: mustache.toString(),
+    template: require('./app.mustache').default.toString(),
     data: {
-        name: 'John Doe'
     },
-    on: {
-        click: function() {
-           alert(this.get('name'));
-        }
+    components: {
+        'app-header': header
     }
 });
