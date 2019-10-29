@@ -1,11 +1,15 @@
 var Ractive = require('ractive').default;
-var template = require('../views/hello.mustache').default.toString();
+var mustache = require('./template/hello.mustache').default;
 
 new Ractive({
     target: '#target',
-    template: template,
+    template: mustache.toString(),
     data: {
         name: 'John Doe'
+    },
+    on: {
+        click: function() {
+           alert(this.get('name'));
+        }
     }
 });
-  

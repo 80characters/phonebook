@@ -164,15 +164,33 @@
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var template = __webpack_require__(/*! ../views/hello.mustache */ "./resources/views/hello.mustache")["default"].toString();
+var mustache = __webpack_require__(/*! ./template/hello.mustache */ "./resources/js/template/hello.mustache")["default"];
 
 new Ractive({
   target: '#target',
-  template: template,
+  template: mustache.toString(),
   data: {
     name: 'John Doe'
+  },
+  on: {
+    click: function click() {
+      alert(this.get('name'));
+    }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/template/hello.mustache":
+/*!**********************************************!*\
+  !*** ./resources/js/template/hello.mustache ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>Hello, {{name}}!</p>\n\n<p>\n    <button on-click=\"click\">Show</button>\n</p>");
 
 /***/ }),
 
@@ -184,19 +202,6 @@ new Ractive({
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/views/hello.mustache":
-/*!****************************************!*\
-  !*** ./resources/views/hello.mustache ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>Hello, {{name}}!</p>");
 
 /***/ }),
 
