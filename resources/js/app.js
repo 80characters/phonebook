@@ -3,7 +3,7 @@ var header = require('./components/header/header');
 var footer = require('./components/footer/footer');
 
 new Ractive({
-    target: '#app',
+    target: '#application',
     template: require('./app.mustache').default.toString(),
     data: {
     },

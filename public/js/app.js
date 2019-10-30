@@ -180,7 +180,7 @@ var header = __webpack_require__(/*! ./components/header/header */ "./resources/
 var footer = __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js");
 
 new Ractive({
-  target: '#app',
+  target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
   data: {},
   components: {
