@@ -11,6 +11,7 @@
     "mix-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
+    "backbone": "^1.4.0",
     "bemify": "^0.1.2",
     "bluebird": "^3.5.5",
     "chalk": "^2.4.2",
@@ -23,7 +24,9 @@
     "express": "~4.16.1",
     "helmet": "^3.20.0",
     "http-errors": "~1.6.3",
+    "jquery": "^3.4.1",
     "laravel-mix": "^4.1.2",
+    "lodash": "^4.17.15",
     "morgan": "~1.9.1",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
