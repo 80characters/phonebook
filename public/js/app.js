@@ -175,17 +175,16 @@
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var header = __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js");
-
-var footer = __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js");
+var config = __webpack_require__(/*! ./config/default */ "./resources/js/config/default.js");
 
 new Ractive({
   target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
   data: {},
   components: {
-    'app-header': header,
-    'app-footer': footer
+    'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
+    'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
+    'app-phonebook-list': __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js")
   }
 });
 
@@ -200,7 +199,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section class=\"app\">\n    <div class=\"wrap\"></div>\n</section>\n\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section class=\"app\">\n    <div class=\"wrap\">\n        <app-phonebook-list/>\n    </div>\n</section>\n\n<app-footer/>");
 
 /***/ }),
 
@@ -229,7 +228,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer\">\n    <div class=\"wrap\">\n        <p>Made by love & cafein.</p>\n    </div>\n</footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer\">\n    <div class=\"wrap\">\n        <p>Made with <img src=\"/images/heart.svg\"/> ft. cafein!</p>\n    </div>\n</footer>\n");
 
 /***/ }),
 
@@ -259,6 +258,46 @@ module.exports = Ractive.extend({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <div class=\"wrap\">\n        <h1>Phonebook</h1>    \n    </div>\n</header>");
+
+/***/ }),
+
+/***/ "./resources/js/components/phonebook/list/list.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/phonebook/list/list.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache")["default"].toString(),
+  data: {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/phonebook/list/list.mustache":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/phonebook/list/list.mustache ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("list");
+
+/***/ }),
+
+/***/ "./resources/js/config/default.js":
+/*!****************************************!*\
+  !*** ./resources/js/config/default.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {};
 
 /***/ }),
 

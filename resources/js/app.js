@@ -1,14 +1,14 @@
-var Ractive = require('ractive').default;
-var header = require('./components/header/header');
-var footer = require('./components/footer/footer');
+const Ractive = require('ractive').default;
+const config = require('./config/default');
 
 new Ractive({
     target: '#application',
     template: require('./app.mustache').default.toString(),
-    data: {
+    data: {        
     },
     components: {
-        'app-header': header,
-        'app-footer': footer,
+        'app-header': require('./components/header/header'),
+        'app-footer': require('./components/footer/footer'),
+        'app-phonebook-list': require('./components/phonebook/list/list'),
     }
 });
