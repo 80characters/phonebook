@@ -5,7 +5,9 @@ const PATHS = {
 	dist: './public'
 };
 
-mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`).webpackConfig({
+mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`, {
+	sourceType: "unambiguous"
+}).webpackConfig({
 	module: {
 		rules: [
 			{
@@ -25,7 +27,7 @@ mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`).webpackConfig({
 				},
 			}
 		}
-	}
+	}	
 });
 
 mix.sass(`${PATHS.src}/css/app.sass`, `${PATHS.dist}/css`).sourceMaps(true, 'source-map');

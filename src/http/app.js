@@ -13,7 +13,7 @@ exports.requires = [
 	'@http-errors',
 	'middlewares.errors-handle',
 	'routes.index',
-	'routes.api'
+	'routes.api.phonebooks'
 ];
 
 exports.factory = function (
@@ -27,7 +27,7 @@ exports.factory = function (
 	createError,
 	midErrorsHandle,
 	indexRouter,
-	apiRouter) {
+	apiPhonebooksRouter) {
 
 	const app = express();
 
@@ -51,8 +51,8 @@ exports.factory = function (
 	app.use(helmet());
 
 	// Register routers.
-	app.use('/', indexRouter);
-	app.use('/api/', apiRouter);
+	app.use('/', indexRouter);	
+	app.use('/api/', apiPhonebooksRouter);
 
 	// Catch 404 and forward to error handler
 	app.use(function (req, res, next) {
