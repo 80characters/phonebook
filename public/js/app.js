@@ -200,7 +200,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section></section>\n\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section class=\"app\">\n    <div class=\"wrap\"></div>\n</section>\n\n<app-footer/>");
 
 /***/ }),
 
@@ -229,7 +229,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<footer>\n    <p>Made by love & cafein.</p>\n</footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer\">\n    <div class=\"wrap\">\n        <p>Made by love & cafein.</p>\n    </div>\n</footer>");
 
 /***/ }),
 
@@ -258,7 +258,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <nav>\n        <ul>\n            <li>List</li>          \n        </ul>\n    </nav>\n</header>");
+/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <div class=\"wrap\">\n        <h1>Phonebook</h1>    \n    </div>\n</header>");
 
 /***/ }),
 
