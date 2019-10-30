@@ -28,4 +28,6 @@ mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`).webpackConfig({
 	}
 });
 
-mix.sass(`${PATHS.src}/css/app.sass`, `${PATHS.dist}/css`);
+mix.sass(`${PATHS.src}/css/app.sass`, `${PATHS.dist}/css`, {
+	precision: 5	
+}).sourceMaps(true, 'source-map');

@@ -19235,3 +19235,4 @@ defineProperty(Ractive.prototype, 'rendered', {
 /***/ })
 
 }]);
+//# sourceMappingURL=vendor.js.map

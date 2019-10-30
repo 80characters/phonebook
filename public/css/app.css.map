@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./resources/js/components/header/header.sass","webpack:///./resources/css/app.sass"],"names":[],"mappings":"AAAA;EACE;CCCF","file":"public/css/app.css","sourcesContent":[".header {\n  min-height: 40px; }\n","\n@import '../js/app.sass';\n"],"sourceRoot":""}

@@ -175,11 +175,10 @@
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var header = __webpack_require__(/*! ./components/header */ "./resources/js/components/header.js");
+var header = __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js");
 
-var footer = __webpack_require__(/*! ./components/footer */ "./resources/js/components/footer.js");
+var footer = __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js");
 
-Ractive.DEBUG = true;
 new Ractive({
   target: '#app',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
@@ -205,26 +204,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/footer.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/footer.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/footer/footer.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/footer/footer.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
 module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer.mustache")["default"].toString(),
+  template: __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer/footer.mustache")["default"].toString(),
   data: {}
 });
 
 /***/ }),
 
-/***/ "./resources/js/components/footer.mustache":
-/*!*************************************************!*\
-  !*** ./resources/js/components/footer.mustache ***!
-  \*************************************************/
+/***/ "./resources/js/components/footer/footer.mustache":
+/*!********************************************************!*\
+  !*** ./resources/js/components/footer/footer.mustache ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -234,32 +233,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/header.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/header.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/header/header.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/header/header.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
 module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header.mustache")["default"].toString(),
+  template: __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header/header.mustache")["default"].toString(),
   data: {}
 });
 
 /***/ }),
 
-/***/ "./resources/js/components/header.mustache":
-/*!*************************************************!*\
-  !*** ./resources/js/components/header.mustache ***!
-  \*************************************************/
+/***/ "./resources/js/components/header/header.mustache":
+/*!********************************************************!*\
+  !*** ./resources/js/components/header/header.mustache ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"\">\n    <nav>\n        <ul>\n            <li>List</li>          \n        </ul>\n    </nav>\n</header>");
+/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <nav>\n        <ul>\n            <li>List</li>          \n        </ul>\n    </nav>\n</header>");
 
 /***/ }),
 
@@ -277,3 +276,4 @@ module.exports = __webpack_require__(/*! /home/thangtt/Documents/nodejs/80c-phon
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map
