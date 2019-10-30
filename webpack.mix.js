@@ -1,5 +1,3 @@
-const path = require('path');
-const webpack = require('webpack');
 const mix = require('laravel-mix');
 
 const PATHS = {
@@ -7,13 +5,13 @@ const PATHS = {
 	dist: './public'
 };
 
-mix.webpackConfig({
+mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`).webpackConfig({
 	module: {
 		rules: [
 			{
 				test: /\.mustache$/,
 				use: 'raw-loader'
-			}
+			},
 		]
 	},
 	optimization: {
@@ -30,5 +28,4 @@ mix.webpackConfig({
 	}
 });
 
-mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`);
-mix.sass(`${PATHS.src}/sass/app.scss`, `${PATHS.dist}/css`);
+mix.sass(`${PATHS.src}/css/app.sass`, `${PATHS.dist}/css`);

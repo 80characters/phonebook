@@ -155,6 +155,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./resources/css/app.sass":
+/*!********************************!*\
+  !*** ./resources/css/app.sass ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -166,12 +177,16 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 var header = __webpack_require__(/*! ./components/header */ "./resources/js/components/header.js");
 
+var footer = __webpack_require__(/*! ./components/footer */ "./resources/js/components/footer.js");
+
+Ractive.DEBUG = true;
 new Ractive({
-  target: '#target',
+  target: '#app',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
   data: {},
   components: {
-    'app-header': header
+    'app-header': header,
+    'app-footer': footer
   }
 });
 
@@ -186,7 +201,36 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header text=\"{{text}}\"/>\n\n<p>hello</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section></section>\n\n<app-footer/>");
+
+/***/ }),
+
+/***/ "./resources/js/components/footer.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/footer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer.mustache")["default"].toString(),
+  data: {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/footer.mustache":
+/*!*************************************************!*\
+  !*** ./resources/js/components/footer.mustache ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<footer>\n    <p>Made by love & cafein.</p>\n</footer>");
 
 /***/ }),
 
@@ -201,9 +245,7 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header.mustache")["default"].toString(),
-  data: {
-    text: "this is new app with Ractivejs"
-  }
+  data: {}
 });
 
 /***/ }),
@@ -217,30 +259,19 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>{{text}}</p>\n");
-
-/***/ }),
-
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"\">\n    <nav>\n        <ul>\n            <li>List</li>          \n        </ul>\n    </nav>\n</header>");
 
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/app.sass ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/thangtt/nodejs/80c-phonebook-server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/thangtt/nodejs/80c-phonebook-server/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/thangtt/Documents/nodejs/80c-phonebook-server/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/thangtt/Documents/nodejs/80c-phonebook-server/resources/css/app.sass */"./resources/css/app.sass");
 
 
 /***/ })
