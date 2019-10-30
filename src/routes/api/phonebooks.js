@@ -10,7 +10,9 @@ exports.factory = function (express) {
     let router = express.Router();
 
     router.get('/phonebooks', function (req, res, next) {
-        res.json({});
+        res.json({
+
+        });
     });
 
     return router;
