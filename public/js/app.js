@@ -270,15 +270,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var Collection = __webpack_require__(/*! ../../../models/phonebook/collection */ "./resources/js/models/phonebook/collection.js")["default"];
+var service = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js")["default"];
 
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache")["default"].toString(),
   data: {},
   oncomplete: function oncomplete() {
-    var obj = new Collection();
-    obj.fetch().then(function (res) {
-      console.log(res);
+    var self = this;
+    service.getAll().then(function (items) {
+      self.set('items', items);
     });
   }
 });
@@ -294,7 +294,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("list");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        <article id=\"person-{{_id}}\" class=\"person\">\n            <h3>{{name}}</h3>\n            <div class=\"person__detail\">\n                <div>\n                    <img src=\"{{picture}}\"/>\n                </div>\n                <div>                    \n                    <p>Phone: {{phone}}</p>\n                    <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                    <p>Address: {{address}}</p>\n                </div>\n            </div>\n            <p>{{about}}</p>         \n        </article>\n    {{/items}}\n</section>");
 
 /***/ }),
 
@@ -324,6 +324,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (backbone__WEBPACK_IMPORTED_MODULE_0___default.a.Collection.extend({
   url: '/api/phonebooks'
 }));
+
+/***/ }),
+
+/***/ "./resources/js/services/phonebooks.js":
+/*!*********************************************!*\
+  !*** ./resources/js/services/phonebooks.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Collection = __webpack_require__(/*! ../models/phonebook/collection */ "./resources/js/models/phonebook/collection.js")["default"];
+
+var PhonebookService = {
+  getAll: function getAll() {
+    return new Collection().fetch();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (PhonebookService);
 
 /***/ }),
 

@@ -530,8 +530,51 @@ template {
   height: 13px;
 }
 
+.person {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #FFFFFF;
+  border-top: 3px solid #9A9738;
+}
+
+.person h3 {
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 25px;
+}
+
+.person img {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.person p {
+  margin-top: 0;
+  margin-bottom: 0px;
+  line-height: 18px;
+}
+
+.person__detail {
+  display: -webkit-box;
+  display: flex;
+}
+
+.person__detail p {
+  margin-bottom: 5px;
+}
+
 .app {
-  padding: 30px 0 60px 0;
+  padding: 60px 0;
+}
+
+a {
+  color: #A75D67;
+}
+
+a:hover {
+  color: #FF6F61;
 }
 
 h1,

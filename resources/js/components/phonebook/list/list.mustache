@@ -1,1 +1,18 @@
-list
+<section class="phonebooks">
+    {{#items}}
+        <article id="person-{{_id}}" class="person">
+            <h3>{{name}}</h3>
+            <div class="person__detail">
+                <div>
+                    <img src="{{picture}}"/>
+                </div>
+                <div>                    
+                    <p>Phone: {{phone}}</p>
+                    <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>                    
+                    <p>Address: {{address}}</p>
+                </div>
+            </div>
+            <p>{{about}}</p>         
+        </article>
+    {{/items}}
+</section>

@@ -1,14 +1,15 @@
 const Ractive = require('ractive').default;
-const Collection = require('../../../models/phonebook/collection').default;
+const service = require('../../../services/phonebooks').default;
 
 module.exports = Ractive.extend({
     template: require('./list.mustache').default.toString(),
     data: {
     },
-    oncomplete: () => {
-        let obj = new Collection();
-        obj.fetch().then((res) => {
-            console.log(res);
+    oncomplete: function() {
+        let self = this;
+
+        service.getAll().then((items) => {
+            self.set('items', items);
         });
     }
 });
