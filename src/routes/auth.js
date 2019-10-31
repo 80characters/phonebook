@@ -9,11 +9,8 @@ exports.requires = [
 exports.factory = function (express, mock) {
     let router = express.Router();
 
-    router.get('/signup', function (req, res, next) {
-        res.render('index', {
-            title: 'Signup now',
-            page: 'SIGNUP'
-        });
+    router.post('/signup', function (req, res, next) {
+        res.json({user: 1});
     });
 
     return router;

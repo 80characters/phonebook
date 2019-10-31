@@ -39,7 +39,11 @@ exports.factory = function (
 	app.use(express.json());
 	app.use(express.urlencoded({ extended: false }));
 	app.use(cookieParser());
-	app.use(session({secret: 'SV5qWtXmEC67CtQ945jETjxHdfX2LYgG'}));
+	app.use(session({
+		secret: 'SV5qWtXmEC67CtQ945jETjxHdfX2LYgG',
+		resave: true,
+    	saveUninitialized: true
+	}));
 	app.use(express.static('./public'));
 
 	// Set view engine.

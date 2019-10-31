@@ -7,10 +7,11 @@ exports.factory = function () {
 
     self.checkSignIn = function (req, res, next) {
         if (!req.session.user) {            
-            res.redirect('/auth/signup');
+            res.render('index', {
+                title: 'Signup now',
+                page: 'SIGNUP'
+            });
         }
-
-        next();
     }
 
     return self;

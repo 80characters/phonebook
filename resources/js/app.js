@@ -1,3 +1,5 @@
+'use strict';
+
 const Ractive = require('ractive').default;
 
 new Ractive({
