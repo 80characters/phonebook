@@ -219,13 +219,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
+var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js")["default"];
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./signup.mustache */ "./resources/js/components/auth/signup/signup.mustache")["default"].toString(),
   data: {},
   on: {
-    signup: function signup(ctx) {
-      ctx.event.preventDefault();
-    }
+    signup: function signup(ctx) {}
   }
 });
 
@@ -378,6 +378,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (backbone__WEBPACK_IMPORTED_MODULE_0___default.a.Model.extend({
   idAttribute: '_id'
 }));
+
+/***/ }),
+
+/***/ "./resources/js/services/auth.js":
+/*!***************************************!*\
+  !*** ./resources/js/services/auth.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var AuthService = {
+  isAvaiable: function isAvaiable(params) {}
+};
+/* harmony default export */ __webpack_exports__["default"] = (AuthService);
 
 /***/ }),
 

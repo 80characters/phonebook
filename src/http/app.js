@@ -61,7 +61,7 @@ exports.factory = function (
 
 	// Register routers.
 	app.use('/', indexRouter);	
-	app.use('/auth', authRouter);
+	app.use('/auth/', authRouter);
 	app.use('/', phonebooksRouter);
 
 	// Catch 404 and forward to error handler

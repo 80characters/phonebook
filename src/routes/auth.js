@@ -10,7 +10,7 @@ exports.factory = function (express, mock) {
     let router = express.Router();
 
     router.post('/signup', function (req, res, next) {
-        res.json({user: 1});
+        res.json({isAvaiable: true});
     });
 
     return router;
