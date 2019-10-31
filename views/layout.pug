@@ -4,8 +4,10 @@ html
     title= title
     link(rel='stylesheet', href='/css/app.css')
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    script.
+      const PAGE="#{page}";
+
   body
     block content
-
     script(src='/js/vendor.js')
     script(src='/js/app.js')

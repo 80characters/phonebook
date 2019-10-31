@@ -1,14 +1,19 @@
 const Ractive = require('ractive').default;
-const config = require('./config/default');
 
 new Ractive({
     target: '#application',
     template: require('./app.mustache').default.toString(),
-    data: {        
+    data: {
     },
     components: {
         'app-header': require('./components/header/header'),
         'app-footer': require('./components/footer/footer'),
-        'app-phonebook-list': require('./components/phonebook/list/list'),
+        'app-content': function() {
+            if ('SIGNUP' === PAGE) {
+                return require('./components/auth/signup/signup');
+            } else {
+                return require('./components/phonebook/list/list');
+            }
+        }
     }
 });

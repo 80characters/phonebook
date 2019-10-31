@@ -5,6 +5,7 @@ exports.name = 'http.app';
 exports.requires = [
 	'@express',
 	'@path',
+	'@express-session',
 	'@cookie-parser',
 	'@morgan',
 	'@body-parser',
@@ -13,12 +14,14 @@ exports.requires = [
 	'@http-errors',
 	'middlewares.errors-handle',
 	'routes.index',
-	'routes.api.phonebooks'
+	'routes.auth',
+	'routes.phonebooks'
 ];
 
 exports.factory = function (
 	express,
 	path,
+	session,
 	cookieParser,
 	logger,
 	bodyParser,
@@ -27,7 +30,8 @@ exports.factory = function (
 	createError,
 	midErrorsHandle,
 	indexRouter,
-	apiPhonebooksRouter) {
+	authRouter,
+	phonebooksRouter) {
 
 	const app = express();
 
@@ -35,6 +39,7 @@ exports.factory = function (
 	app.use(express.json());
 	app.use(express.urlencoded({ extended: false }));
 	app.use(cookieParser());
+	app.use(session({secret: 'SV5qWtXmEC67CtQ945jETjxHdfX2LYgG'}));
 	app.use(express.static('./public'));
 
 	// Set view engine.
@@ -52,7 +57,8 @@ exports.factory = function (
 
 	// Register routers.
 	app.use('/', indexRouter);	
-	app.use('/api/', apiPhonebooksRouter);
+	app.use('/auth', authRouter);
+	app.use('/', phonebooksRouter);
 
 	// Catch 404 and forward to error handler
 	app.use(function (req, res, next) {

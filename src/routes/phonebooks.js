@@ -1,6 +1,6 @@
 'use strict';
 
-exports.name = 'routes.api.phonebooks';
+exports.name = 'routes.phonebooks';
 
 exports.requires = [
     '@express',

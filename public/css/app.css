@@ -565,6 +565,44 @@ template {
   margin-bottom: 5px;
 }
 
+.frm_signup {
+  margin: 0 auto;
+  width: 480px;
+}
+
+.frm_signup p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: flex;
+  line-height: 30px;
+}
+
+.frm_signup label {
+  display: block;
+  min-width: 30%;
+}
+
+.frm_signup input {
+  width: 70%;
+  padding: 0 5px;
+}
+
+.frm_signup button[type='submit'] {
+  line-height: 30px;
+  margin-left: 30%;
+  background-color: #A75D67;
+  color: #FFFFFF;
+  border-radius: 3px;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.frm_signup button[type='submit']:hover {
+  background-color: #FF6F61;
+}
+
 .app {
   padding: 60px 0;
 }

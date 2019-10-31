@@ -175,8 +175,6 @@
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var config = __webpack_require__(/*! ./config/default */ "./resources/js/config/default.js");
-
 new Ractive({
   target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
@@ -184,7 +182,13 @@ new Ractive({
   components: {
     'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
     'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
-    'app-phonebook-list': __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js")
+    'app-content': function appContent() {
+      if ('SIGNUP' === PAGE) {
+        return __webpack_require__(/*! ./components/auth/signup/signup */ "./resources/js/components/auth/signup/signup.js");
+      } else {
+        return __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
+      }
+    }
   }
 });
 
@@ -199,7 +203,36 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section class=\"app\">\n    <div class=\"wrap\">\n        <app-phonebook-list/>\n    </div>\n</section>\n\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class=\"app\">\n    <div class=\"wrap\">        \n        <app-content/>        \n    </div>\n</section>\n<app-footer/>");
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/signup/signup.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/auth/signup/signup.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./signup.mustache */ "./resources/js/components/auth/signup/signup.mustache")["default"].toString(),
+  data: {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/signup/signup.mustache":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/auth/signup/signup.mustache ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup\" on-submit=\"signup\">\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"text\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"password\">Password</label>\n            <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n        </p>\n        <p>\n            <button type=\"submit\">Signup</button>\n        </p>\n    </form>\n</section>\n");
 
 /***/ }),
 
@@ -298,17 +331,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/config/default.js":
-/*!****************************************!*\
-  !*** ./resources/js/config/default.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-/***/ }),
-
 /***/ "./resources/js/models/phonebook/collection.js":
 /*!*****************************************************!*\
   !*** ./resources/js/models/phonebook/collection.js ***!
@@ -322,7 +344,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var backbone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(backbone__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (backbone__WEBPACK_IMPORTED_MODULE_0___default.a.Collection.extend({
-  url: '/api/phonebooks'
+  url: '/phonebooks'
 }));
 
 /***/ }),
