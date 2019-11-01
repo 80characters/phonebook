@@ -2,13 +2,15 @@
 <section class='app'>
     <div class='wrap' id='{{page}}'>
 
-        {{#signed}}
+        {{#signed}}            
             <nav class='nav'>
+                <input class="search" type='text' placeholder='Enter your keyword'/>
+
                 <ul>
                     <li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
                     <li><span>/</span></li>
                     <li><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
-                </ul>
+                </ul>                
             </nav>
         {{/signed}}
 

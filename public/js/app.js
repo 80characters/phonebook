@@ -221,7 +221,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}\n            <nav class='nav'>\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>\n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}            \n            <nav class='nav'>\n                <input class=\"search\" type='text' placeholder='Enter your keyword'/>\n\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>                \n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
 
 /***/ }),
 

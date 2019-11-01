@@ -2367,6 +2367,23 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   text-align: center;
 }
 
+.search {
+  padding-left: 5px;
+  padding-right: 5px;
+  min-width: 320px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #A75D67;
+  outline: none !important;
+  color: #333333;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.search:hover {
+  background-color: #FFFFFF;
+}
+
 .app {
   padding: 60px 0;
 }
@@ -2376,9 +2393,7 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   margin: 0 0 15px 0;
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-          flex-direction: row-reverse;
+  line-height: 20px;
 }
 
 .nav ul,
@@ -2387,11 +2402,13 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
 }
 
 .nav ul {
+  margin-left: auto;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: end;
           align-items: flex-end;
-  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 0;
 }
 
@@ -2407,6 +2424,8 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   border: none;
   padding: 0 15px;
   cursor: pointer;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 
 .btn.btn-solid {
@@ -2447,6 +2466,8 @@ body {
 
 a {
   color: #A75D67;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 
 a:hover {
