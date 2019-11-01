@@ -11,10 +11,24 @@ module.exports = Ractive.extend({
         self._getAll();
 
         self.observe('searchBy', _.debounce((newValue, oldValue) => {
-            if(!newValue) {
+            if (!newValue) {
+                if(newValue !== oldValue) {
+                    self._getAll();
+                }
                 return;
             }
             
+            let items = self.get('items');
+
+            if (!items) {
+                return;
+            }
+
+            items.forEach((item) => {              
+                item.isHide = !item.name.toLowerCase().includes(newValue);                
+            });
+            
+            self.set('items', items);
         }, 250));
     },
     _getAll: function() {
