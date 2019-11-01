@@ -178,20 +178,28 @@
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
+var phonebookList = __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
+
+var signupForm = __webpack_require__(/*! ./components/auth/signup/signup */ "./resources/js/components/auth/signup/signup.js");
+
 new Ractive({
   target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
-  data: {},
+  data: {
+    page: PAGE
+  },
   components: {
     'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
     'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
-    'app-content': function appContent() {
-      if ('SIGNUP' === PAGE) {
-        return __webpack_require__(/*! ./components/auth/signup/signup */ "./resources/js/components/auth/signup/signup.js");
-      } else {
-        return __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
-      }
+    'app-phonebook-list': phonebookList,
+    'app-signup-form': signupForm
+  },
+  "goto": function goto(page) {
+    if (!page) {
+      return;
     }
+
+    this.set('page', page);
   }
 });
 
@@ -206,7 +214,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class=\"app\">\n    <div class=\"wrap\">        \n        <app-content/>        \n    </div>\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class=\"app\">\n    <div class=\"wrap\" id=\"{{page}}\">\n        {{#if page == 'SIGNUP'}}\n            <app-signup-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
 
 /***/ }),
 
@@ -221,11 +229,26 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js")["default"];
 
+var swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./signup.mustache */ "./resources/js/components/auth/signup/signup.mustache")["default"].toString(),
   data: {},
   on: {
-    signup: function signup(ctx) {}
+    signup: function signup(ctx) {
+      var self = this;
+      service.isAvaiable({
+        email: self.get('email'),
+        password: self.get('password')
+      }).then(function (res) {
+        swal.fire('Good job!', 'Welcome bro', 'success').then(function () {
+          self.parent["goto"]('HOME');
+        });
+      })["catch"](function (err) {
+        swal.fire(err.statusText);
+      });
+      return false;
+    }
   }
 });
 
@@ -390,10 +413,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var AuthService = {
-  isAvaiable: function isAvaiable(params) {}
+  isAvaiable: function isAvaiable(params) {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: '/auth//signup',
+        method: 'post',
+        type: 'json',
+        data: params
+      }).done(function (res) {
+        resolve(res);
+      }).fail(function (err) {
+        reject(err);
+      });
+    });
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (AuthService);
 

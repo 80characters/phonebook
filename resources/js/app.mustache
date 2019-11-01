@@ -1,7 +1,11 @@
 <app-header/>
 <section class="app">
-    <div class="wrap">        
-        <app-content/>        
+    <div class="wrap" id="{{page}}">
+        {{#if page == 'SIGNUP'}}
+            <app-signup-form/>
+        {{else}}
+            <app-phonebook-list/>
+        {{/if}}
     </div>
 </section>
 <app-footer/>
