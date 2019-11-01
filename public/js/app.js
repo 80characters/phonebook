@@ -437,7 +437,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article id=\"person-{{_id}}\" class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{picture}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{picture}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
 
 /***/ }),
 
