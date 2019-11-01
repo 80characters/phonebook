@@ -13,7 +13,8 @@ exports.factory = function (express, auth) {
 	router.get('/', auth.checkSignIn, function (req, res, next) {		
 		res.render('index',{
 			title: 'Phonebook',
-			page: 'HOME'
+			page: 'HOME',
+			signed: req.session.user ? true : false
 		});
 	});
 

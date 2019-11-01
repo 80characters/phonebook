@@ -11,7 +11,7 @@ exports.factory = function () {
                 title: 'Signup now',
                 page: 'SIGNUP'
             });
-        } else {
+        } else {            
             next();
         }        
     }

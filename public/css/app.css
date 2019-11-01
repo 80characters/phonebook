@@ -2376,12 +2376,32 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   padding: 60px 0;
 }
 
-a {
-  color: #A75D67;
+.nav {
+  display: block;
+  margin: 0 0 15px 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+          flex-direction: row-reverse;
 }
 
-a:hover {
-  color: #FF6F61;
+.nav ul,
+.nav li {
+  list-style: none;
+}
+
+.nav ul {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+          align-items: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  margin-left: 10px;
 }
 
 h1,
@@ -2403,6 +2423,14 @@ body {
   width: 960px;
   margin: 0 auto;
   font-size: 13px;
+}
+
+a {
+  color: #A75D67;
+}
+
+a:hover {
+  color: #FF6F61;
 }
 
 

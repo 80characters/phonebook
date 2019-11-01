@@ -14,7 +14,8 @@ module.exports = Ractive.extend({
                 password: self.get('password')
             }).then((res) => {
                 swal.fire('Good job!', 'Welcome bro', 'success').then(() => {
-                    self.parent.goto('HOME');
+                    self.parent.set('signed', true);
+                    self.parent.set('page', 'HOME');
                 });
             }).catch((err) => {
                 swal.fire(err.statusText)

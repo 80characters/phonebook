@@ -41,7 +41,7 @@ exports.factory = function (
 	app.use(cookieParser());
 	app.use(session({
 		secret: 'SV5qWtXmEC67CtQ945jETjxHdfX2LYgG',
-		cookie: { maxAge: 60000 }
+		cookie: { maxAge: 60000 * 30 }
 		// resave: true,
     	// saveUninitialized: true
 	}));

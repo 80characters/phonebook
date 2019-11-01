@@ -2,12 +2,26 @@
 @import './components/footer/footer'
 @import './components/phonebook/list/list'
 @import './components/auth/signup/signup'
+@import './components/auth/signout/signout'
 
 .app    
     padding: 60px 0
 
-a
-    color: $color-link
+.nav
+    display: block
+    margin: 0 0 15px 0
+    display: flex
+    flex-direction: row-reverse
+        
+    ul, li
+        list-style: none
 
-    &:hover
-        color: $color-hover
+    ul
+        display: flex
+        align-items: flex-end
+        margin: 0
+        padding: 0
+
+    li
+        margin-left: 10px
+    

@@ -1,8 +1,21 @@
 <app-header/>
-<section class="app">
-    <div class="wrap" id="{{page}}">
+<section class='app'>
+    <div class='wrap' id='{{page}}'>
+
+        {{#signed}}
+            <nav class='nav'>
+                <ul>
+                    <li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
+                    <li><span>/</span></li>
+                    <li><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
+                </ul>
+            </nav>
+        {{/signed}}
+
         {{#if page == 'SIGNUP'}}
             <app-signup-form/>
+        {{elseif page == 'SIGNOUT'}}
+            <app-signout-form/>
         {{else}}
             <app-phonebook-list/>
         {{/if}}
