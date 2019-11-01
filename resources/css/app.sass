@@ -20,7 +20,8 @@ body
     font-family: $font-text
 
 .wrap
-    width: 960px
+    max-width: 960px
+    width: 100%
     margin: 0 auto
     font-size: 13px
 
@@ -30,3 +31,9 @@ a
     
     &:hover
         color: $color-hover
+
+
+@media only screen and (max-width: 767px)
+    .wrap
+        padding-left: 30px
+        padding-right: 30px
