@@ -3,13 +3,13 @@ const service = require('../../../services/auth').default;
 const swal = require('sweetalert2');
 
 module.exports = Ractive.extend({
-    template: require('./signup.mustache').default.toString(),
+    template: require('./signin.mustache').default.toString(),
     data: {
     },
     on: {
         signup: function (ctx) {
             var self = this;
-            service.isAvaiable({
+            service.checkin({
                 email: self.get('email'),
                 password: self.get('password')
             }).then((res) => {

@@ -2357,19 +2357,14 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   padding: 0 5px;
 }
 
-.frm_signup button[type='submit'] {
-  line-height: 30px;
+.frm_signup .btn {
   margin-left: 30%;
-  background-color: #A75D67;
-  color: #FFFFFF;
-  border-radius: 3px;
-  border: none;
-  padding: 0 15px;
-  cursor: pointer;
 }
 
-.frm_signup button[type='submit']:hover {
-  background-color: #FF6F61;
+.signout {
+  margin: 0 auto;
+  width: 480px;
+  text-align: center;
 }
 
 .app {
@@ -2402,6 +2397,31 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
 
 .nav li {
   margin-left: 10px;
+}
+
+.btn {
+  line-height: 30px;
+  background-color: #A75D67;
+  color: #FFFFFF;
+  border-radius: 3px;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.btn.btn-solid {
+  border: 1px solid #A75D67;
+  background-color: #FFFFFF;
+  color: #A75D67;
+  line-height: 28px;
+}
+
+.btn.btn-solid:hover {
+  color: #FFFFFF;
+}
+
+.btn:hover {
+  background-color: #FF6F61;
 }
 
 h1,

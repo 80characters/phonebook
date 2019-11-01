@@ -5,11 +5,11 @@ exports.name = 'middlewares.auth';
 exports.factory = function () {
     let self = {};
 
-    self.checkSignIn = function (req, res, next) {
+    self.checkSignIn = function (req, res, next) {        
         if (!req.session.user) {            
             res.render('index', {
-                title: 'Signup now',
-                page: 'SIGNUP'
+                title: 'Here we are!',
+                page: 'SIGNIN'
             });
         } else {            
             next();

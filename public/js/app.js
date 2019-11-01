@@ -180,7 +180,7 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 var phonebookList = __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
 
-var signUpForm = __webpack_require__(/*! ./components/auth/signup/signup */ "./resources/js/components/auth/signup/signup.js");
+var signInForm = __webpack_require__(/*! ./components/auth/signin/signin */ "./resources/js/components/auth/signin/signin.js");
 
 var signOutForm = __webpack_require__(/*! ./components/auth/signout/signout */ "./resources/js/components/auth/signout/signout.js");
 
@@ -195,7 +195,7 @@ new Ractive({
     'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
     'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
     'app-phonebook-list': phonebookList,
-    'app-signup-form': signUpForm,
+    'app-signin-form': signInForm,
     'app-signout-form': signOutForm
   },
   on: {
@@ -221,50 +221,13 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}\n            <nav class='nav'>\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>\n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNUP'}}\n            <app-signup-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}\n            <nav class='nav'>\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>\n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
 
 /***/ }),
 
-/***/ "./resources/js/components/auth/signout/signout.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/auth/signout/signout.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
-
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./signout.mustache */ "./resources/js/components/auth/signout/signout.mustache")["default"].toString(),
-  data: {},
-  on: {
-    confirm: function confirm() {
-      alert(1);
-    },
-    cancel: function cancel() {
-      alert(2);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/components/auth/signout/signout.mustache":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/auth/signout/signout.mustache ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signout\">\n    <h2>Are you sure ?</h2>\n    <button on-click=\"confirm\">Yes</button>\n    <button on-click=\"cancel\">No</button>\n</section>");
-
-/***/ }),
-
-/***/ "./resources/js/components/auth/signup/signup.js":
+/***/ "./resources/js/components/auth/signin/signin.js":
 /*!*******************************************************!*\
-  !*** ./resources/js/components/auth/signup/signup.js ***!
+  !*** ./resources/js/components/auth/signin/signin.js ***!
   \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -276,12 +239,12 @@ var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/
 var swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 
 module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./signup.mustache */ "./resources/js/components/auth/signup/signup.mustache")["default"].toString(),
+  template: __webpack_require__(/*! ./signin.mustache */ "./resources/js/components/auth/signin/signin.mustache")["default"].toString(),
   data: {},
   on: {
     signup: function signup(ctx) {
       var self = this;
-      service.isAvaiable({
+      service.checkin({
         email: self.get('email'),
         password: self.get('password')
       }).then(function (res) {
@@ -299,16 +262,59 @@ module.exports = Ractive.extend({
 
 /***/ }),
 
-/***/ "./resources/js/components/auth/signup/signup.mustache":
+/***/ "./resources/js/components/auth/signin/signin.mustache":
 /*!*************************************************************!*\
-  !*** ./resources/js/components/auth/signup/signup.mustache ***!
+  !*** ./resources/js/components/auth/signin/signin.mustache ***!
   \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup\" on-submit=\"signup\">\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"password\">Password</label>\n            <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n        </p>\n        <p>\n            <button type=\"submit\">Signup</button>\n        </p>\n    </form>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup\" on-submit=\"signup\">\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"password\">Password</label>\n            <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Signup</button>\n        </p>\n    </form>\n</section>\n");
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/signout/signout.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/auth/signout/signout.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./signout.mustache */ "./resources/js/components/auth/signout/signout.mustache")["default"].toString(),
+  data: {},
+  on: {
+    confirm: function confirm() {
+      var self = this;
+      service.checkout({}).then(function () {
+        self.parent.set('page', 'SIGNIN');
+        self.parent.set('signed', false);
+      });
+    },
+    cancel: function cancel() {
+      this.parent.set('page', 'HOME');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/signout/signout.mustache":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/auth/signout/signout.mustache ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signout\">\n    <h2>Are you sure ?</h2>\n    <button class=\"btn\" on-click=\"confirm\">Yes</button>\n    <button class=\"btn btn-solid\" on-click=\"cancel\">No</button>\n</section>");
 
 /***/ }),
 
@@ -461,10 +467,24 @@ __webpack_require__.r(__webpack_exports__);
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var AuthService = {
-  isAvaiable: function isAvaiable(params) {
+  checkin: function checkin(params) {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: '/auth//signup',
+        url: '/auth/signin',
+        method: 'post',
+        type: 'json',
+        data: params
+      }).done(function (res) {
+        resolve(res);
+      }).fail(function (err) {
+        reject(err);
+      });
+    });
+  },
+  checkout: function checkout(params) {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: '/auth/signout',
         method: 'post',
         type: 'json',
         data: params

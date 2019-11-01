@@ -1,7 +1,7 @@
 @import './components/header/header'
 @import './components/footer/footer'
 @import './components/phonebook/list/list'
-@import './components/auth/signup/signup'
+@import './components/auth/signin/signin'
 @import './components/auth/signout/signout'
 
 .app    
@@ -24,4 +24,24 @@
 
     li
         margin-left: 10px
-    
+
+.btn
+    line-height: 30px
+    background-color: $color-link
+    color: $color-light
+    border-radius: 3px
+    border: none
+    padding: 0 15px
+    cursor: pointer
+
+    &.btn-solid
+        border: 1px solid $color-link
+        background-color: $color-light
+        color: $color-link
+        line-height: 28px
+        &:hover
+            color: $color-light
+
+    &:hover
+        background-color: $color-hover
+
