@@ -221,7 +221,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}            \n            <nav class='nav'>\n                <input class=\"search\" type='text' placeholder='Enter your keyword'/>\n\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>                \n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}            \n            <nav class='nav'>\n                {{#if page == 'HOME'}}\n                    <input class=\"search\" type='text' placeholder='Enter your keyword' value=\"{{searchBy}}\"/>\n                {{/if}}\n\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>                \n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list searchBy=\"{{searchBy}}\"/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
 
 /***/ }),
 
@@ -387,10 +387,23 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 var service = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js")["default"];
 
+var _ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache")["default"].toString(),
   data: {},
   oncomplete: function oncomplete() {
+    var self = this;
+
+    self._getAll();
+
+    self.observe('searchBy', _.debounce(function (newValue, oldValue) {
+      if (!newValue) {
+        return;
+      }
+    }, 250));
+  },
+  _getAll: function _getAll() {
     var self = this;
     service.getAll().then(function (items) {
       self.set('items', items);

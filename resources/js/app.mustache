@@ -4,7 +4,9 @@
 
         {{#signed}}            
             <nav class='nav'>
-                <input class="search" type='text' placeholder='Enter your keyword'/>
+                {{#if page == 'HOME'}}
+                    <input class="search" type='text' placeholder='Enter your keyword' value="{{searchBy}}"/>
+                {{/if}}
 
                 <ul>
                     <li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
@@ -19,7 +21,7 @@
         {{elseif page == 'SIGNOUT'}}
             <app-signout-form/>
         {{else}}
-            <app-phonebook-list/>
+            <app-phonebook-list searchBy="{{searchBy}}"/>
         {{/if}}
     </div>
 </section>
