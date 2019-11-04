@@ -274,7 +274,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup\" on-submit=\"signup\">\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"password\">Password</label>\n            <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Signup</button>\n        </p>\n    </form>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup frm\" on-submit=\"signup\">\n        <div class='frm_control'>\n            <p>\n                <label for=\"email\">Email</label>\n                <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"password\">Password</label>\n                <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <button class=\"btn\" type=\"submit\">Signup</button>\n            </p>\n        </div>\n    </form>\n</section>\n");
 
 /***/ }),
 
@@ -392,6 +392,9 @@ var validate = __webpack_require__(/*! validate.js */ "./node_modules/validate.j
 
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
+  components: {
+    'app-error': __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js")
+  },
   data: {
     name: '',
     email: '',
@@ -412,7 +415,8 @@ module.exports = Ractive.extend({
 
       var errors = self._isValid(data);
 
-      if (errors.length) {
+      if (errors) {
+        console.log(errors);
         self.set('errors', errors);
       } else {// TODO: save new contact.
       }
@@ -469,7 +473,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new\" on-submit=\"submit\">\n        <p>\n            <label for=\"name\">Name</label>\n            <input id=\"name\" type=\"text\" value=\"{{name}}\"/>\n        </p>\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"phone\">Phone</label>\n            <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n        </p>\n        <p>\n            <label for=\"address\">Address</label>\n            <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n        </p>\n        <p>\n            <label for=\"about\">About</label>\n            <textarea id=\"about\">{{about}}</textarea>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </p>\n    </form>\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new frm\" on-submit=\"submit\">\n        <div class='frm_control'>\n            <p>\n                <label for=\"name\">Name</label>\n                <input id=\"name\" type=\"text\" value=\"{{name}}\"/>      \n            </p>\n            <app-error errors=\"{{errors.name}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"email\">Email</label>\n                <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n            </p>\n            <app-error errors=\"{{errors.email}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"phone\">Phone</label>\n                <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n            </p>\n            <app-error errors=\"{{errors.phone}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"address\">Address</label>\n                <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n            </p>\n            <app-error errors=\"{{errors.address}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"about\">About</label>\n                <textarea id=\"about\">{{about}}</textarea>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </div>\n    </form>\n</section>");
 
 /***/ }),
 
@@ -535,6 +539,35 @@ module.exports = Ractive.extend({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{picture}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
+
+/***/ }),
+
+/***/ "./resources/js/components/shared/validate/error/error.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/shared/validate/error/error.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./error.mustache */ "./resources/js/components/shared/validate/error/error.mustache")["default"].toString(),
+  data: {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/shared/validate/error/error.mustache":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/shared/validate/error/error.mustache ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"errors\">\n    {{#errors}}\n        <li>{{.}}</li>    \n    {{/errors}}\n</ul>");
 
 /***/ }),
 

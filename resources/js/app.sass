@@ -4,6 +4,7 @@
 @import './components/phonebook/addnew/addnew'
 @import './components/auth/signin/signin'
 @import './components/auth/signout/signout'
+@import './components/shared/validate/error/error'
 
 .search
     padding-left: 5px
@@ -19,7 +20,7 @@
     &:hover
         background-color: $color-light
 
-.app    
+.app
     padding: 60px 0
 
 .nav
@@ -27,7 +28,7 @@
     margin: 0 0 15px 0
     display: flex
     line-height: 20px
-        
+
     ul, li
         list-style: none
 
@@ -37,7 +38,7 @@
         align-items: flex-end
         margin-top: 5px
         margin-bottom: 5px
-        padding: 0        
+        padding: 0
 
     li
         margin-left: 10px
@@ -82,4 +83,34 @@
 
     &:hover
         background-color: $color-hover
-        
+
+.frm
+	margin: 0 auto
+	width: 480px
+
+	.frm_control
+        @include clearfix
+        margin-top: 0
+        margin-bottom: 20px
+        & > p
+            display: flex
+            line-height: 30px
+            margin-top: 0
+            margin-bottom: 0
+
+	label
+		display: block
+		min-width: 30%
+
+	input
+		width: 70%
+		padding: 0 5px
+
+	.btn
+		margin-left: 30%
+
+	textarea
+		width: 70%
+		min-height: 60px
+		max-height: 180px
+		resize: vertical

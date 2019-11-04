@@ -3,6 +3,9 @@ const validate = require("validate.js");
 
 module.exports = Ractive.extend({
     template: require('./addnew.mustache').default.toString(),
+    components: {
+        'app-error': require('../../shared/validate/error/error')
+    },
     data: {
         name: '',
         email: '',
@@ -23,7 +26,8 @@ module.exports = Ractive.extend({
 
             let errors = self._isValid(data);
 
-            if (errors.length) {
+            if (errors) {
+                console.log(errors);
                 self.set('errors', errors);
             } else {
                 // TODO: save new contact.

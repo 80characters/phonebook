@@ -2334,71 +2334,23 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   margin-bottom: 5px;
 }
 
-.frm_add_new {
-  margin: 0 auto;
-  width: 480px;
-}
-
-.frm_add_new p {
-  margin-top: 0;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  display: flex;
-  line-height: 30px;
-}
-
-.frm_add_new label {
-  display: block;
-  min-width: 30%;
-}
-
-.frm_add_new input {
-  width: 70%;
-  padding: 0 5px;
-}
-
-.frm_add_new .btn {
-  margin-left: 30%;
-}
-
-.frm_add_new textarea {
-  width: 70%;
-  min-height: 60px;
-  max-height: 180px;
-  resize: vertical;
-}
-
-.frm_signup {
-  margin: 0 auto;
-  width: 480px;
-}
-
-.frm_signup p {
-  margin-top: 0;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  display: flex;
-  line-height: 30px;
-}
-
-.frm_signup label {
-  display: block;
-  min-width: 30%;
-}
-
-.frm_signup input {
-  width: 70%;
-  padding: 0 5px;
-}
-
-.frm_signup .btn {
-  margin-left: 30%;
-}
-
 .signout {
   margin: 0 auto;
   width: 480px;
   text-align: center;
+}
+
+ul.errors {
+  list-style: none;
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+ul.errors li {
+  font-size: 90%;
+  color: red;
+  line-height: 18px;
 }
 
 .search {
@@ -2497,6 +2449,63 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
 
 .btn_new:hover {
   background-color: #FF6F61;
+}
+
+.frm {
+  margin: 0 auto;
+  width: 480px;
+}
+
+.frm .frm_control {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.frm .frm_control:before,
+.frm .frm_control:after {
+  content: " ";
+  display: table;
+}
+
+.frm .frm_control:after {
+  display: block;
+  clear: both;
+  height: 1px;
+  margin-top: -1px;
+  visibility: hidden;
+}
+
+.frm .frm_control {
+  *zoom: 1;
+}
+
+.frm .frm_control > p {
+  display: -webkit-box;
+  display: flex;
+  line-height: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.frm label {
+  display: block;
+  min-width: 30%;
+}
+
+.frm input {
+  width: 70%;
+  padding: 0 5px;
+}
+
+.frm .btn {
+  margin-left: 30%;
+}
+
+.frm textarea {
+  width: 70%;
+  min-height: 60px;
+  max-height: 180px;
+  resize: vertical;
 }
 
 h1,
