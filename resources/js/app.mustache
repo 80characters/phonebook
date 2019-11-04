@@ -1,28 +1,34 @@
 <app-header/>
 <section class='app'>
-    <div class='wrap' id='{{page}}'>
+	<div class='wrap' id='{{page}}'>
 
-        {{#signed}}            
-            <nav class='nav'>
-                {{#if page == 'HOME'}}
-                    <input class="search" type='text' placeholder='Enter your keyword' value="{{searchBy}}"/>
-                {{/if}}
+		{{#signed}}
+			<nav class='nav'>
+				{{#if page == 'HOME'}}
+					<input class="search" type='text' placeholder='Enter your keyword' value="{{searchBy}}"/>
+				{{/if}}
 
-                <ul>
-                    <li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
-                    <li><span>/</span></li>
-                    <li><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
-                </ul>                
-            </nav>
-        {{/signed}}
+				<ul>
+					<li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
+					<li><span>/</span></li>
+					<li><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
+				</ul>
+			</nav>
+		{{/signed}}
 
-        {{#if page == 'SIGNIN'}}
-            <app-signin-form/>
-        {{elseif page == 'SIGNOUT'}}
-            <app-signout-form/>
-        {{else}}
-            <app-phonebook-list searchBy="{{searchBy}}"/>
-        {{/if}}
-    </div>
+		{{#if page == 'SIGNIN'}}
+			<app-signin-form/>
+		{{elseif page == 'SIGNOUT'}}
+			<app-signout-form/>
+		{{elseif page == 'ADD'}}
+			<app-add-new-form/>
+		{{else}}
+			<app-phonebook-list searchBy="{{searchBy}}"/>
+		{{/if}}
+	</div>
+
+	{{#signed}}
+		<a class="btn_new" href="#" on-click="@.fire('goto', 'ADD')">+</a>
+	{{/signed}}
 </section>
 <app-footer/>

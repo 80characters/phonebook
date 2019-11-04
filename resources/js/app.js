@@ -4,6 +4,7 @@ const Ractive = require('ractive').default;
 const phonebookList = require('./components/phonebook/list/list');
 const signInForm = require('./components/auth/signin/signin');
 const signOutForm = require('./components/auth/signout/signout');
+const addNewForm = require('./components/phonebook/addnew/addnew');
 
 new Ractive({
     target: '#application',
@@ -17,7 +18,8 @@ new Ractive({
         'app-footer': require('./components/footer/footer'),
         'app-phonebook-list': phonebookList,
         'app-signin-form': signInForm,
-        'app-signout-form': signOutForm
+        'app-signout-form': signOutForm,
+        'app-add-new-form': addNewForm
     },
     on: {
         goto: function (ctx, page) {            

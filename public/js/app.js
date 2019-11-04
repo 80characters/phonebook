@@ -184,6 +184,8 @@ var signInForm = __webpack_require__(/*! ./components/auth/signin/signin */ "./r
 
 var signOutForm = __webpack_require__(/*! ./components/auth/signout/signout */ "./resources/js/components/auth/signout/signout.js");
 
+var addNewForm = __webpack_require__(/*! ./components/phonebook/addnew/addnew */ "./resources/js/components/phonebook/addnew/addnew.js");
+
 new Ractive({
   target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
@@ -196,7 +198,8 @@ new Ractive({
     'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
     'app-phonebook-list': phonebookList,
     'app-signin-form': signInForm,
-    'app-signout-form': signOutForm
+    'app-signout-form': signOutForm,
+    'app-add-new-form': addNewForm
   },
   on: {
     "goto": function goto(ctx, page) {
@@ -221,7 +224,7 @@ new Ractive({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n    <div class='wrap' id='{{page}}'>\n\n        {{#signed}}            \n            <nav class='nav'>\n                {{#if page == 'HOME'}}\n                    <input class=\"search\" type='text' placeholder='Enter your keyword' value=\"{{searchBy}}\"/>\n                {{/if}}\n\n                <ul>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n                    <li><span>/</span></li>\n                    <li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n                </ul>                \n            </nav>\n        {{/signed}}\n\n        {{#if page == 'SIGNIN'}}\n            <app-signin-form/>\n        {{elseif page == 'SIGNOUT'}}\n            <app-signout-form/>\n        {{else}}\n            <app-phonebook-list searchBy=\"{{searchBy}}\"/>\n        {{/if}}\n    </div>\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n\t<div class='wrap' id='{{page}}'>\n\n\t\t{{#signed}}\n\t\t\t<nav class='nav'>\n\t\t\t\t{{#if page == 'HOME'}}\n\t\t\t\t\t<input class=\"search\" type='text' placeholder='Enter your keyword' value=\"{{searchBy}}\"/>\n\t\t\t\t{{/if}}\n\n\t\t\t\t<ul>\n\t\t\t\t\t<li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n\t\t\t\t\t<li><span>/</span></li>\n\t\t\t\t\t<li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n\t\t\t\t</ul>\n\t\t\t</nav>\n\t\t{{/signed}}\n\n\t\t{{#if page == 'SIGNIN'}}\n\t\t\t<app-signin-form/>\n\t\t{{elseif page == 'SIGNOUT'}}\n\t\t\t<app-signout-form/>\n\t\t{{elseif page == 'ADD'}}\n\t\t\t<app-add-new-form/>\n\t\t{{else}}\n\t\t\t<app-phonebook-list searchBy=\"{{searchBy}}\"/>\n\t\t{{/if}}\n\t</div>\n\n\t{{#signed}}\n\t\t<a class=\"btn_new\" href=\"#\" on-click=\"@.fire('goto', 'ADD')\">+</a>\n\t{{/signed}}\n</section>\n<app-footer/>");
 
 /***/ }),
 
@@ -373,6 +376,38 @@ module.exports = Ractive.extend({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <div class=\"wrap\">\n        <h1>Phonebook</h1>    \n    </div>\n</header>");
+
+/***/ }),
+
+/***/ "./resources/js/components/phonebook/addnew/addnew.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/phonebook/addnew/addnew.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+
+module.exports = Ractive.extend({
+  template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
+  data: {},
+  on: {
+    submit: function submit(ctx) {}
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/phonebook/addnew/addnew.mustache":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/phonebook/addnew/addnew.mustache ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new\" on-submit=\"save\">\n        <p>\n            <label for=\"name\">Name</label>\n            <input id=\"name\" type=\"text\" value=\"{{name}}\"/>\n        </p>\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"phone\">Phone</label>\n            <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n        </p>\n        <p>\n            <label for=\"address\">Address</label>\n            <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n        </p>\n        <p>\n            <label for=\"about\">About</label>\n            <textarea id=\"about\">{{about}}</textarea>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </p>\n    </form>\n</section>");
 
 /***/ }),
 

@@ -1,6 +1,7 @@
 @import './components/header/header'
 @import './components/footer/footer'
 @import './components/phonebook/list/list'
+@import './components/phonebook/addnew/addnew'
 @import './components/auth/signin/signin'
 @import './components/auth/signout/signout'
 
@@ -62,3 +63,23 @@
     &:hover
         background-color: $color-hover
 
+.btn_new
+    display: block
+    height: 45px
+    width: 45px
+    border-radius: 50%
+    line-height: 45px
+    text-align: center
+    text-decoration: none
+    background-color: $color-link
+    color: $color-light !important
+    font-size: 20px
+    font-weight: 700
+    position: fixed
+    bottom: 30px
+    right: 15px
+    cursor: pointer
+
+    &:hover
+        background-color: $color-hover
+        
