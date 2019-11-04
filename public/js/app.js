@@ -388,11 +388,73 @@ __webpack_require__.r(__webpack_exports__);
 
 var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
+var validate = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
-  data: {},
+  data: {
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    about: ''
+  },
   on: {
-    submit: function submit(ctx) {}
+    submit: function submit(ctx) {
+      var self = this;
+      var data = {
+        name: self.get('name').trim(),
+        email: self.get('email').trim(),
+        phone: self.get('phone').trim(),
+        address: self.get('address').trim(),
+        about: self.get('about').trim()
+      };
+
+      var errors = self._isValid(data);
+
+      if (errors.length) {
+        self.set('errors', errors);
+      } else {// TODO: save new contact.
+      }
+
+      return false;
+    }
+  },
+  _isValid: function _isValid(data) {
+    var self = this;
+    return validate(data, self._getRules());
+  },
+  _getRules: function _getRules() {
+    return {
+      name: {
+        presence: true,
+        length: {
+          minimum: 6
+        }
+      },
+      email: {
+        presence: true,
+        email: true
+      },
+      phone: {
+        presence: true,
+        length: {
+          minimum: 8,
+          maximum: 13
+        },
+        format: {
+          pattern: "^[0-9\+\s-]{8,13}",
+          flags: "i",
+          message: "is invalid format"
+        }
+      },
+      address: {
+        presence: true,
+        length: {
+          minimum: 6
+        }
+      }
+    };
   }
 });
 
@@ -407,7 +469,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new\" on-submit=\"save\">\n        <p>\n            <label for=\"name\">Name</label>\n            <input id=\"name\" type=\"text\" value=\"{{name}}\"/>\n        </p>\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"phone\">Phone</label>\n            <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n        </p>\n        <p>\n            <label for=\"address\">Address</label>\n            <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n        </p>\n        <p>\n            <label for=\"about\">About</label>\n            <textarea id=\"about\">{{about}}</textarea>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </p>\n    </form>\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new\" on-submit=\"submit\">\n        <p>\n            <label for=\"name\">Name</label>\n            <input id=\"name\" type=\"text\" value=\"{{name}}\"/>\n        </p>\n        <p>\n            <label for=\"email\">Email</label>\n            <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n        </p>\n        <p>\n            <label for=\"phone\">Phone</label>\n            <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n        </p>\n        <p>\n            <label for=\"address\">Address</label>\n            <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n        </p>\n        <p>\n            <label for=\"about\">About</label>\n            <textarea id=\"about\">{{about}}</textarea>\n        </p>\n        <p>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </p>\n    </form>\n</section>");
 
 /***/ }),
 

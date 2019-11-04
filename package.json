@@ -33,7 +33,8 @@
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
     "pug": "2.0.0-beta11",
-    "sweetalert2": "^8.18.6"
+    "sweetalert2": "^8.18.6",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
