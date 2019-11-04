@@ -390,6 +390,8 @@ var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive
 
 var validate = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
 
+var config = __webpack_require__(/*! ../../../config/default */ "./resources/js/config/default.js");
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
   components: {
@@ -404,8 +406,9 @@ module.exports = Ractive.extend({
   },
   on: {
     submit: function submit(ctx) {
+      ctx.event.preventDefault();
       var self = this;
-      var data = {
+      var frmData = {
         name: self.get('name').trim(),
         email: self.get('email').trim(),
         phone: self.get('phone').trim(),
@@ -413,52 +416,16 @@ module.exports = Ractive.extend({
         about: self.get('about').trim()
       };
 
-      var errors = self._isValid(data);
+      var errors = self._isValid(frmData);
 
       if (errors) {
-        console.log(errors);
         self.set('errors', errors);
       } else {// TODO: save new contact.
       }
-
-      return false;
     }
   },
-  _isValid: function _isValid(data) {
-    var self = this;
-    return validate(data, self._getRules());
-  },
-  _getRules: function _getRules() {
-    return {
-      name: {
-        presence: true,
-        length: {
-          minimum: 6
-        }
-      },
-      email: {
-        presence: true,
-        email: true
-      },
-      phone: {
-        presence: true,
-        length: {
-          minimum: 8,
-          maximum: 13
-        },
-        format: {
-          pattern: "^[0-9\+\s-]{8,13}",
-          flags: "i",
-          message: "is invalid format"
-        }
-      },
-      address: {
-        presence: true,
-        length: {
-          minimum: 6
-        }
-      }
-    };
+  _isValid: function _isValid(frmData) {
+    return validate(frmData, config.form.addNew.rules);
   }
 });
 
@@ -568,6 +535,52 @@ module.exports = Ractive.extend({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"errors\">\n    {{#errors}}\n        <li>{{.}}</li>    \n    {{/errors}}\n</ul>");
+
+/***/ }),
+
+/***/ "./resources/js/config/default.js":
+/*!****************************************!*\
+  !*** ./resources/js/config/default.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  form: {
+    addNew: {
+      rules: {
+        name: {
+          presence: true,
+          length: {
+            minimum: 6
+          }
+        },
+        email: {
+          presence: true,
+          email: true
+        },
+        phone: {
+          presence: true,
+          length: {
+            minimum: 8,
+            maximum: 13
+          },
+          format: {
+            pattern: "^[0-9\+\s-]{8,13}",
+            flags: "i",
+            message: "is invalid format"
+          }
+        },
+        address: {
+          presence: true,
+          length: {
+            minimum: 6
+          }
+        }
+      }
+    }
+  }
+};
 
 /***/ }),
 

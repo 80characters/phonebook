@@ -1,5 +1,6 @@
 const Ractive = require('ractive').default;
 const validate = require("validate.js");
+const config = require('../../../config/default');
 
 module.exports = Ractive.extend({
     template: require('./addnew.mustache').default.toString(),
@@ -15,8 +16,10 @@ module.exports = Ractive.extend({
     },
     on: {
         submit: function (ctx) {
+            ctx.event.preventDefault();
+
             let self = this;
-            let data = {
+            let frmData = {
                 name: self.get('name').trim(),
                 email: self.get('email').trim(),
                 phone: self.get('phone').trim(),
@@ -24,53 +27,16 @@ module.exports = Ractive.extend({
                 about: self.get('about').trim()
             };
 
-            let errors = self._isValid(data);
+            let errors = self._isValid(frmData);
 
             if (errors) {
-                console.log(errors);
                 self.set('errors', errors);
             } else {
                 // TODO: save new contact.
             }
-
-            return false;
         }
     },
-    _isValid: function (data) {
-        let self = this;
-
-        return validate(data, self._getRules());
-    },
-    _getRules: function () {
-        return {
-            name: {
-                presence: true,
-                length: {
-                    minimum: 6
-                }
-            },
-            email: {
-                presence: true,
-                email: true,
-            },
-            phone: {
-                presence: true,
-                length: {
-                    minimum: 8,
-                    maximum: 13
-                },
-                format: {
-                    pattern: "^[0-9\+\s-]{8,13}",
-                    flags: "i",
-                    message: "is invalid format"
-                }
-            },
-            address: {
-                presence: true,
-                length: {
-                    minimum: 6
-                }
-            }
-        };
+    _isValid: function (frmData) {        
+        return validate(frmData, config.form.addNew.rules);
     }
 });
