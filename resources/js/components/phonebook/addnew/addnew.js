@@ -1,6 +1,8 @@
 const Ractive = require('ractive').default;
-const validate = require("validate.js");
+const validate = require('validate.js');
 const config = require('../../../config/default');
+const service = require('../../../services/phonebooks').default;
+const swal = require('sweetalert2');
 
 module.exports = Ractive.extend({
     template: require('./addnew.mustache').default.toString(),
@@ -8,35 +10,42 @@ module.exports = Ractive.extend({
         'app-error': require('../../shared/validate/error/error')
     },
     data: {
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
+        name: 'mr_ali33',
+        email: 'ali33@localhost.com',
+        phone: '0982231170',
+        address: 'Hanoi, Vietnam',
         about: ''
     },
     on: {
         submit: function (ctx) {
             ctx.event.preventDefault();
-
             let self = this;
-            let frmData = {
-                name: self.get('name').trim(),
-                email: self.get('email').trim(),
-                phone: self.get('phone').trim(),
-                address: self.get('address').trim(),
-                about: self.get('about').trim()
-            };
-
-            let errors = self._isValid(frmData);
+            let params = self._getData();
+            let errors = validate(params, config.form.addNew.rules);
 
             if (errors) {
                 self.set('errors', errors);
             } else {
-                // TODO: save new contact.
+                service.create(params)
+                    .then((result) => {
+                        swal.fire('Successful', 'A new contact has been created', 'success').then(() => {
+                            self.parent.set('signed', true);
+                            self.parent.set('page', 'HOME');
+                        });
+                    }).catch((err) => {
+                        swal.fire(err.statusText)
+                    });
             }
         }
     },
-    _isValid: function (frmData) {        
-        return validate(frmData, config.form.addNew.rules);
+    _getData: function () {
+        let self = this;
+        return {
+            name: self.get('name').trim(),
+            email: self.get('email').trim(),
+            phone: self.get('phone').trim(),
+            address: self.get('address').trim(),
+            about: self.get('about').trim()
+        };
     }
 });

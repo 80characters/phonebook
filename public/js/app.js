@@ -392,40 +392,54 @@ var validate = __webpack_require__(/*! validate.js */ "./node_modules/validate.j
 
 var config = __webpack_require__(/*! ../../../config/default */ "./resources/js/config/default.js");
 
+var service = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js")["default"];
+
+var swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
   components: {
     'app-error': __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js")
   },
   data: {
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
+    name: 'mr_ali33',
+    email: 'ali33@localhost.com',
+    phone: '0982231170',
+    address: 'Hanoi, Vietnam',
     about: ''
   },
   on: {
     submit: function submit(ctx) {
       ctx.event.preventDefault();
       var self = this;
-      var frmData = {
-        name: self.get('name').trim(),
-        email: self.get('email').trim(),
-        phone: self.get('phone').trim(),
-        address: self.get('address').trim(),
-        about: self.get('about').trim()
-      };
 
-      var errors = self._isValid(frmData);
+      var params = self._getData();
+
+      var errors = validate(params, config.form.addNew.rules);
 
       if (errors) {
         self.set('errors', errors);
-      } else {// TODO: save new contact.
+      } else {
+        service.create(params).then(function (result) {
+          swal.fire('Successful', 'A new contact has been created', 'success').then(function () {
+            self.parent.set('signed', true);
+            self.parent.set('page', 'HOME');
+          });
+        })["catch"](function (err) {
+          swal.fire(err.statusText);
+        });
       }
     }
   },
-  _isValid: function _isValid(frmData) {
-    return validate(frmData, config.form.addNew.rules);
+  _getData: function _getData() {
+    var self = this;
+    return {
+      name: self.get('name').trim(),
+      email: self.get('email').trim(),
+      phone: self.get('phone').trim(),
+      address: self.get('address').trim(),
+      about: self.get('about').trim()
+    };
   }
 });
 
@@ -440,7 +454,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"add-new\">\n    <form class=\"frm_add_new frm\" on-submit=\"submit\">\n        <div class='frm_control'>\n            <p>\n                <label for=\"name\">Name</label>\n                <input id=\"name\" type=\"text\" value=\"{{name}}\"/>      \n            </p>\n            <app-error errors=\"{{errors.name}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"email\">Email</label>\n                <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n            </p>\n            <app-error errors=\"{{errors.email}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"phone\">Phone</label>\n                <input id=\"phone\" type=\"phone\" value=\"{{phone}}\"/>\n            </p>\n            <app-error errors=\"{{errors.phone}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"address\">Address</label>\n                <input id=\"address\" type=\"text\" value=\"{{address}}\"/>\n            </p>\n            <app-error errors=\"{{errors.address}}\"/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"about\">About</label>\n                <textarea id=\"about\">{{about}}</textarea>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <button class=\"btn\" type=\"submit\">Submit</button>\n        </div>\n    </form>\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class='add-new'>\n    <form class='frm_add_new frm' on-submit='submit'>\n        <div class='frm_control'>\n            <p>\n                <label for='name'>Name</label>\n                <input id='name' type='text' value='{{name}}'/>      \n            </p>\n            <app-error errors='{{errors.name}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='email'>Email</label>\n                <input id='email' type='email' value='{{email}}'/>\n            </p>\n            <app-error errors='{{errors.email}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='phone'>Phone</label>\n                <input id='phone' type='phone' value='{{phone}}'/>\n            </p>\n            <app-error errors='{{errors.phone}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='address'>Address</label>\n                <input id='address' type='text' value='{{address}}'/>\n            </p>\n            <app-error errors='{{errors.address}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='about'>About</label>\n                <textarea id='about'>{{about}}</textarea>\n            </p>\n        </div>\n        <div class='frm_control'>                        \n            <button class='btn' type='submit'>Submit</button>\n        </div>\n    </form>\n</section>");
 
 /***/ }),
 
@@ -621,6 +635,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (backbone__WEBPACK_IMPORTED_MODULE_0___default.a.Model.extend({
+  url: '/phonebooks',
   idAttribute: '_id'
 }));
 
@@ -682,9 +697,21 @@ var AuthService = {
 __webpack_require__.r(__webpack_exports__);
 var Collection = __webpack_require__(/*! ../models/phonebook/collection */ "./resources/js/models/phonebook/collection.js")["default"];
 
+var Model = __webpack_require__(/*! ../models/phonebook/model */ "./resources/js/models/phonebook/model.js")["default"];
+
 var PhonebookService = {
   getAll: function getAll() {
     return new Collection().fetch();
+  },
+  create: function create(params) {
+    return new Promise(function (resolve, reject) {
+      try {
+        var phonebook = new Collection().create(params);
+        resolve(phonebook);
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (PhonebookService);
