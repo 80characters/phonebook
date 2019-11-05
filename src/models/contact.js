@@ -7,7 +7,8 @@ exports.requires = [
 ];
 
 exports.factory = function (mongoose) {
-	const Contact = new mongoose.Schema({
+	const collectionName = 'contacts';
+	const schema = new mongoose.Schema({
 		index: { type: Number },
 		picture: { type: String },
 		age: { type: Number },
@@ -27,5 +28,5 @@ exports.factory = function (mongoose) {
 		favoriteFruit: { type: String }
 	});
 
-	return mongoose.model('Contact', Contact);
+	return mongoose.model(collectionName, schema);
 };

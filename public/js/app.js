@@ -402,10 +402,10 @@ module.exports = Ractive.extend({
     'app-error': __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js")
   },
   data: {
-    name: 'mr_ali33',
-    email: 'ali33@localhost.com',
-    phone: '0982231170',
-    address: 'Hanoi, Vietnam',
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
     about: ''
   },
   on: {
