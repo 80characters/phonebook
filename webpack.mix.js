@@ -6,7 +6,7 @@ const PATHS = {
 };
 
 mix.js(`${PATHS.src}/js/app.js`, `${PATHS.dist}/js`, {
-	sourceType: "unambiguous"
+	sourceType: "module"
 }).webpackConfig({
 	module: {
 		rules: [

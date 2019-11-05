@@ -473,7 +473,11 @@ var _ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 module.exports = Ractive.extend({
   template: __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache")["default"].toString(),
-  data: {},
+  data: {
+    avatar: function avatar(id) {
+      return "https://api.adorable.io/avatars/64/".concat(id, ".png");
+    }
+  },
   oncomplete: function oncomplete() {
     var self = this;
 
@@ -519,7 +523,7 @@ module.exports = Ractive.extend({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{picture}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{avatar(_id)}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
 
 /***/ }),
 

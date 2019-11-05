@@ -12,7 +12,11 @@ exports.factory = function (express, serviceContact, mock) {
     let router = express.Router();
 
     router.get('/phonebooks', function (req, res, next) {
-        res.json(mock);
+        serviceContact.getAll().then((contacts) => {
+            res.json(contacts);
+        }).catch((err) => {
+            res.status(404).json({ message: 'contact not found' });
+        });
     });
 
     router.post('/phonebooks', function (req, res, next) {

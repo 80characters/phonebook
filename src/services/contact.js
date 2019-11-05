@@ -6,11 +6,15 @@ exports.requires = [
     'models.contact'
 ];
 
-exports.factory = function (modelContact) {
+exports.factory = function (model) {
     return {
         create: (data) => {
-            let contact = new modelContact(data);
+            let contact = new model(data);
             return contact.save();
+        },
+        getAll: () => {
+            let query = model.find({}, null, {});
+            return query.exec();
         }
     }
 };

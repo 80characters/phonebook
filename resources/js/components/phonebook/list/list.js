@@ -5,6 +5,9 @@ const _ = require('lodash');
 module.exports = Ractive.extend({
     template: require('./list.mustache').default.toString(),
     data: {
+        avatar: (id) => {
+            return `https://api.adorable.io/avatars/64/${id}.png`;
+        }
     },
     oncomplete: function () {
         let self = this;
