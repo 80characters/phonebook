@@ -20,7 +20,7 @@
     "cross-env": "^5.2.0",
     "debug": "~2.6.9",
     "di-linker": "^2.1.5",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "express-session": "^1.17.0",
     "helmet": "^3.20.0",

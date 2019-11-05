@@ -3,6 +3,7 @@
 exports.name = 'http.app';
 
 exports.requires = [
+	'@dotenv',
 	'@express',
 	'@path',
 	'@express-session',
@@ -12,6 +13,7 @@ exports.requires = [
 	'@cors',
 	'@helmet',
 	'@http-errors',
+	'@mongoose',
 	'middlewares.errors-handle',
 	'routes.index',
 	'routes.auth',
@@ -19,6 +21,7 @@ exports.requires = [
 ];
 
 exports.factory = function (
+	env,
 	express,
 	path,
 	session,
@@ -28,22 +31,29 @@ exports.factory = function (
 	cors,
 	helmet,
 	createError,
+	mongoose,
 	midErrorsHandle,
 	indexRouter,
 	authRouter,
 	phonebooksRouter) {
 
-	const app = express();
+	env.config();
 
+	mongoose.connect(process.env.MONGODB_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	});
+
+	const app = express();
 	app.use(logger('combined'));
 	app.use(express.json());
 	app.use(express.urlencoded({ extended: false }));
 	app.use(cookieParser());
 	app.use(session({
-		secret: 'SV5qWtXmEC67CtQ945jETjxHdfX2LYgG',
-		cookie: { maxAge: 60000 * 30 }
-		// resave: true,
-    	// saveUninitialized: true
+		secret: process.env.SESSION_KEY,
+		cookie: { maxAge: 60000 * 30 },		
+		saveUninitialized: true,
+		resave: true
 	}));
 	app.use(express.static('./public'));
 
