@@ -1,7 +1,6 @@
-var Ractive = require('ractive').default;
+import Ractive from 'ractive';
+import template from './footer.mustache';
 
-module.exports = Ractive.extend({
-    template: require('./footer.mustache').default.toString(),
-    data: {
-    }
+export default Ractive.extend({
+    template: template
 });

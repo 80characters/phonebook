@@ -1,9 +1,10 @@
-const Ractive = require('ractive').default;
-const service = require('../../../services/phonebooks').default;
-const _ = require('lodash');
+import _ from 'lodash';
+import Ractive from 'ractive';
+import service from '../../../services/phonebooks';
+import template from './list.mustache';
 
-module.exports = Ractive.extend({
-    template: require('./list.mustache').default.toString(),
+export default Ractive.extend({
+    template: template,
     data: {
         avatar: (id) => {
             return `https://api.adorable.io/avatars/64/${id}.png`;

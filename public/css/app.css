@@ -708,6 +708,8 @@ template {
           justify-content: center;
   padding: 0.625em;
   overflow-x: hidden;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
   background-color: transparent;
   -webkit-overflow-scrolling: touch;
 }
@@ -856,11 +858,6 @@ template {
   .swal2-container .swal2-modal {
     margin: 0 !important;
   }
-}
-
-.swal2-container.swal2-fade {
-  -webkit-transition: background-color 0.1s;
-  transition: background-color 0.1s;
 }
 
 .swal2-container.swal2-shown {

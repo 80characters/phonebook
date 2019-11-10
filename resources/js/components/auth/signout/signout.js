@@ -1,10 +1,9 @@
-const Ractive = require('ractive').default;
-const service = require('../../../services/auth').default;
+import Ractive from 'ractive';
+import service from '../../../services/auth';
+import template from './signout.mustache';
 
-module.exports = Ractive.extend({
-    template: require('./signout.mustache').default.toString(),
-    data: {
-    },
+export default Ractive.extend({
+    template: template,    
     on: {
         confirm: function() {
             var self = this;

@@ -1,13 +1,12 @@
-const Collection = require('../models/phonebook/collection').default;
-const Model = require('../models/phonebook/model').default;
+import Collection from '../models/phonebook/collection';
 
-const PhonebookService = {
+export default {
     getAll: () => {
         return new Collection().fetch();
     },
     create: (params) => {
         return new Promise((resolve, reject) => {
-            try {                
+            try {
                 let phonebook = new Collection().create(params);
                 resolve(phonebook);
             } catch (err) {
@@ -16,5 +15,3 @@ const PhonebookService = {
         });
     }
 };
-
-export default PhonebookService;

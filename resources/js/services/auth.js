@@ -1,6 +1,6 @@
-const $ = require('jquery');
+import $ from 'jquery';
 
-const AuthService = {
+export default {
     checkin: function (params) {
         return new Promise(function (resolve, reject) {
             $.ajax({
@@ -30,5 +30,3 @@ const AuthService = {
         });
     }
 };
-
-export default AuthService;

@@ -1,8 +1,8 @@
-const Ractive = require('ractive').default;
-const service = require('../../../services/auth').default;
-const swal = require('sweetalert2');
+import Ractive from 'ractive';
+import swal from 'sweetalert2';
+import service from '../../../services/auth';
 
-module.exports = Ractive.extend({
+export default Ractive.extend({
     template: require('./signin.mustache').default.toString(),
     data: {
     },

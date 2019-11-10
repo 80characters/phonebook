@@ -170,15 +170,17 @@
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _components_phonebook_list_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
 
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
 
-var phonebookList = __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
+
 
 var signInForm = __webpack_require__(/*! ./components/auth/signin/signin */ "./resources/js/components/auth/signin/signin.js");
 
@@ -186,7 +188,7 @@ var signOutForm = __webpack_require__(/*! ./components/auth/signout/signout */ "
 
 var addNewForm = __webpack_require__(/*! ./components/phonebook/addnew/addnew */ "./resources/js/components/phonebook/addnew/addnew.js");
 
-new Ractive({
+new ractive__WEBPACK_IMPORTED_MODULE_0__["default"]({
   target: '#application',
   template: __webpack_require__(/*! ./app.mustache */ "./resources/js/app.mustache")["default"].toString(),
   data: {
@@ -196,7 +198,7 @@ new Ractive({
   components: {
     'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
     'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
-    'app-phonebook-list': phonebookList,
+    'app-phonebook-list': _components_phonebook_list_list__WEBPACK_IMPORTED_MODULE_1__["default"],
     'app-signin-form': signInForm,
     'app-signout-form': signOutForm,
     'app-add-new-form': addNewForm
@@ -232,36 +234,39 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/auth/signin/signin.js ***!
   \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js");
 
-var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js")["default"];
 
-var swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 
-module.exports = Ractive.extend({
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   template: __webpack_require__(/*! ./signin.mustache */ "./resources/js/components/auth/signin/signin.mustache")["default"].toString(),
   data: {},
   on: {
     signup: function signup(ctx) {
       var self = this;
-      service.checkin({
+      _services_auth__WEBPACK_IMPORTED_MODULE_2__["default"].checkin({
         email: self.get('email'),
         password: self.get('password')
       }).then(function (res) {
-        swal.fire('Good job!', 'Welcome bro', 'success').then(function () {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Good job!', 'Welcome bro', 'success').then(function () {
           self.parent.set('signed', true);
           self.parent.set('page', 'HOME');
         });
       })["catch"](function (err) {
-        swal.fire(err.statusText);
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire(err.statusText);
       });
       return false;
     }
   }
-});
+}));
 
 /***/ }),
 
@@ -282,20 +287,23 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/auth/signout/signout.js ***!
   \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _services_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js");
+/* harmony import */ var _signout_mustache__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./signout.mustache */ "./resources/js/components/auth/signout/signout.mustache");
 
-var service = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js")["default"];
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./signout.mustache */ "./resources/js/components/auth/signout/signout.mustache")["default"].toString(),
-  data: {},
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  template: _signout_mustache__WEBPACK_IMPORTED_MODULE_2__["default"],
   on: {
     confirm: function confirm() {
       var self = this;
-      service.checkout({}).then(function () {
+      _services_auth__WEBPACK_IMPORTED_MODULE_1__["default"].checkout({}).then(function () {
         self.parent.set('page', 'SIGNIN');
         self.parent.set('signed', false);
       });
@@ -304,7 +312,7 @@ module.exports = Ractive.extend({
       this.parent.set('page', 'HOME');
     }
   }
-});
+}));
 
 /***/ }),
 
@@ -325,15 +333,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/footer/footer.js ***!
   \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _footer_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer/footer.mustache");
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer/footer.mustache")["default"].toString(),
-  data: {}
-});
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  template: _footer_mustache__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
 
 /***/ }),
 
@@ -354,15 +365,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/header/header.js ***!
   \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _header_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header/header.mustache");
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header/header.mustache")["default"].toString(),
-  data: {}
-});
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  template: _header_mustache__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
 
 /***/ }),
 
@@ -383,23 +397,31 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************!*\
   !*** ./resources/js/components/phonebook/addnew/addnew.js ***!
   \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
+/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(validate_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _config_default__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../config/default */ "./resources/js/config/default.js");
+/* harmony import */ var _services_phonebooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js");
+/* harmony import */ var _addnew_mustache__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache");
+/* harmony import */ var _shared_validate_error_error__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js");
 
-var validate = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
 
-var config = __webpack_require__(/*! ../../../config/default */ "./resources/js/config/default.js");
 
-var service = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js")["default"];
 
-var swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache")["default"].toString(),
+
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  template: _addnew_mustache__WEBPACK_IMPORTED_MODULE_5__["default"],
   components: {
-    'app-error': __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js")
+    'app-error': _shared_validate_error_error__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   data: {
     name: '',
@@ -415,18 +437,18 @@ module.exports = Ractive.extend({
 
       var params = self._getData();
 
-      var errors = validate(params, config.form.addNew.rules);
+      var errors = validate_js__WEBPACK_IMPORTED_MODULE_1___default()(params, _config_default__WEBPACK_IMPORTED_MODULE_3__["default"].form.addNew.rules);
 
       if (errors) {
         self.set('errors', errors);
       } else {
-        service.create(params).then(function (result) {
-          swal.fire('Successful', 'A new contact has been created', 'success').then(function () {
+        _services_phonebooks__WEBPACK_IMPORTED_MODULE_4__["default"].create(params).then(function (result) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Successful', 'A new contact has been created', 'success').then(function () {
             self.parent.set('signed', true);
             self.parent.set('page', 'HOME');
           });
         })["catch"](function (err) {
-          swal.fire(err.statusText);
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(err.statusText);
         });
       }
     }
@@ -441,7 +463,7 @@ module.exports = Ractive.extend({
       about: self.get('about').trim()
     };
   }
-});
+}));
 
 /***/ }),
 
@@ -462,17 +484,22 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************!*\
   !*** ./resources/js/components/phonebook/list/list.js ***!
   \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _services_phonebooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js");
+/* harmony import */ var _list_mustache__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache");
 
-var service = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js")["default"];
 
-var _ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./list.mustache */ "./resources/js/components/phonebook/list/list.mustache")["default"].toString(),
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
+  template: _list_mustache__WEBPACK_IMPORTED_MODULE_3__["default"],
   data: {
     avatar: function avatar(id) {
       return "https://api.adorable.io/avatars/64/".concat(id, ".png");
@@ -483,7 +510,7 @@ module.exports = Ractive.extend({
 
     self._getAll();
 
-    self.observe('searchBy', _.debounce(function (newValue, oldValue) {
+    self.observe('searchBy', lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(function (newValue, oldValue) {
       if (!newValue) {
         if (newValue !== oldValue) {
           self._getAll();
@@ -506,11 +533,11 @@ module.exports = Ractive.extend({
   },
   _getAll: function _getAll() {
     var self = this;
-    service.getAll().then(function (items) {
+    _services_phonebooks__WEBPACK_IMPORTED_MODULE_2__["default"].getAll().then(function (items) {
       self.set('items', items);
     });
   }
-});
+}));
 
 /***/ }),
 
@@ -531,15 +558,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************!*\
   !*** ./resources/js/components/shared/validate/error/error.js ***!
   \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var Ractive = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs")["default"];
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
+/* harmony import */ var _error_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error.mustache */ "./resources/js/components/shared/validate/error/error.mustache");
 
-module.exports = Ractive.extend({
-  template: __webpack_require__(/*! ./error.mustache */ "./resources/js/components/shared/validate/error/error.mustache")["default"].toString(),
+
+/* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  template: _error_mustache__WEBPACK_IMPORTED_MODULE_1__["default"],
   data: {}
-});
+}));
 
 /***/ }),
 
@@ -560,10 +591,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./resources/js/config/default.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = {
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
   form: {
     addNew: {
       rules: {
@@ -598,7 +631,7 @@ module.exports = {
       }
     }
   }
-};
+});
 
 /***/ }),
 
@@ -613,13 +646,12 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var backbone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! backbone */ "./node_modules/backbone/backbone.js");
 /* harmony import */ var backbone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(backbone__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model */ "./resources/js/models/phonebook/model.js");
 
-
-var model = __webpack_require__(/*! ./model */ "./resources/js/models/phonebook/model.js")["default"];
 
 /* harmony default export */ __webpack_exports__["default"] = (backbone__WEBPACK_IMPORTED_MODULE_0___default.a.Collection.extend({
   url: '/phonebooks',
-  model: model
+  model: _model__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
 /***/ }),
@@ -654,12 +686,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-var AuthService = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   checkin: function checkin(params) {
     return new Promise(function (resolve, reject) {
-      $.ajax({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
         url: '/auth/signin',
         method: 'post',
         type: 'json',
@@ -673,7 +706,7 @@ var AuthService = {
   },
   checkout: function checkout(params) {
     return new Promise(function (resolve, reject) {
-      $.ajax({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
         url: '/auth/signout',
         method: 'post',
         type: 'json',
@@ -685,8 +718,7 @@ var AuthService = {
       });
     });
   }
-};
-/* harmony default export */ __webpack_exports__["default"] = (AuthService);
+});
 
 /***/ }),
 
@@ -699,26 +731,23 @@ var AuthService = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var Collection = __webpack_require__(/*! ../models/phonebook/collection */ "./resources/js/models/phonebook/collection.js")["default"];
+/* harmony import */ var _models_phonebook_collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/phonebook/collection */ "./resources/js/models/phonebook/collection.js");
 
-var Model = __webpack_require__(/*! ../models/phonebook/model */ "./resources/js/models/phonebook/model.js")["default"];
-
-var PhonebookService = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   getAll: function getAll() {
-    return new Collection().fetch();
+    return new _models_phonebook_collection__WEBPACK_IMPORTED_MODULE_0__["default"]().fetch();
   },
   create: function create(params) {
     return new Promise(function (resolve, reject) {
       try {
-        var phonebook = new Collection().create(params);
+        var phonebook = new _models_phonebook_collection__WEBPACK_IMPORTED_MODULE_0__["default"]().create(params);
         resolve(phonebook);
       } catch (err) {
         reject(err);
       }
     });
   }
-};
-/* harmony default export */ __webpack_exports__["default"] = (PhonebookService);
+});
 
 /***/ }),
 
@@ -729,8 +758,8 @@ var PhonebookService = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/thangtt/Documents/nodejs/80c-phonebook-server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/thangtt/Documents/nodejs/80c-phonebook-server/resources/css/app.sass */"./resources/css/app.sass");
+__webpack_require__(/*! /home/thangtt/Documents/NodeJs/80c-phonebook-server/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/thangtt/Documents/NodeJs/80c-phonebook-server/resources/css/app.sass */"./resources/css/app.sass");
 
 
 /***/ })

@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
-const model = require('./model').default;
+import Model from './model';
 
 export default Backbone.Collection.extend({
     url: '/phonebooks',
-    model: model
+    model: Model
 });

@@ -1,13 +1,15 @@
-const Ractive = require('ractive').default;
-const validate = require('validate.js');
-const config = require('../../../config/default');
-const service = require('../../../services/phonebooks').default;
-const swal = require('sweetalert2');
+import Ractive from 'ractive';
+import validate from 'validate.js';
+import swal from 'sweetalert2';
+import config from '../../../config/default';
+import service from '../../../services/phonebooks';
+import template from './addnew.mustache';
+import appError from '../../shared/validate/error/error';
 
-module.exports = Ractive.extend({
-    template: require('./addnew.mustache').default.toString(),
+export default Ractive.extend({
+    template: template,
     components: {
-        'app-error': require('../../shared/validate/error/error')
+        'app-error': appError
     },
     data: {
         name: '',

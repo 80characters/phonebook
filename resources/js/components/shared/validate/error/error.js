@@ -1,7 +1,8 @@
-const Ractive = require('ractive').default;
+import Ractive from 'ractive';
+import template from './error.mustache';
 
-module.exports = Ractive.extend({
-    template: require('./error.mustache').default.toString(),
+export default Ractive.extend({
+    template: template,
     data: {
     }
 });

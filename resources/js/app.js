@@ -1,7 +1,7 @@
 'use strict';
 
-const Ractive = require('ractive').default;
-const phonebookList = require('./components/phonebook/list/list');
+import Ractive from 'ractive';
+import phonebookList from './components/phonebook/list/list';
 const signInForm = require('./components/auth/signin/signin');
 const signOutForm = require('./components/auth/signout/signout');
 const addNewForm = require('./components/phonebook/addnew/addnew');
