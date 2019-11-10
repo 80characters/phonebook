@@ -688,35 +688,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   checkin: function checkin(params) {
-    return new Promise(function (resolve, reject) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-        url: '/auth/signin',
-        method: 'post',
-        type: 'json',
-        data: params
-      }).done(function (res) {
-        resolve(res);
-      }).fail(function (err) {
-        reject(err);
-      });
-    });
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/auth/signin', params);
   },
   checkout: function checkout(params) {
-    return new Promise(function (resolve, reject) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-        url: '/auth/signout',
-        method: 'post',
-        type: 'json',
-        data: params
-      }).done(function (res) {
-        resolve(res);
-      }).fail(function (err) {
-        reject(err);
-      });
-    });
+    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/auth/signout', params);
   }
 });
 
