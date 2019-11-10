@@ -229,7 +229,7 @@ new ractive__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n<section class='app'>\n\t<div class='wrap' id='{{page}}'>\n\n\t\t{{#signed}}\n\t\t\t<nav class='nav'>\n\t\t\t\t{{#if page == 'HOME'}}\n\t\t\t\t\t<input class=\"search\" type='text' placeholder='Enter your keyword' value=\"{{searchBy}}\"/>\n\t\t\t\t{{/if}}\n\n\t\t\t\t<ul>\n\t\t\t\t\t<li><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n\t\t\t\t\t<li><span>/</span></li>\n\t\t\t\t\t<li><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n\t\t\t\t</ul>\n\t\t\t</nav>\n\t\t{{/signed}}\n\n\t\t{{#if page == 'SIGNIN'}}\n\t\t\t<app-signin-form/>\n\t\t{{elseif page == 'SIGNOUT'}}\n\t\t\t<app-signout-form/>\n\t\t{{elseif page == 'ADD'}}\n\t\t\t<app-add-new-form/>\n\t\t{{else}}\n\t\t\t<app-phonebook-list searchBy=\"{{searchBy}}\"/>\n\t\t{{/if}}\n\t</div>\n\n\t{{#signed}}\n\t\t<a class=\"btn_new\" href=\"#\" on-click=\"@.fire('goto', 'ADD')\">+</a>\n\t{{/signed}}\n</section>\n<app-footer/>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header/>\n\n<section class=\"main_content main_content--fullwidth\">\n\t<div class='container'>\n\t\t{{#signed}}\t\n\t\t\t<nav class=\"nav--primary\">\t\t\t\n\t\t\t\t<ul class=\"nav--dash\">\n\t\t\t\t\t<li class=\"nav--dash__item\"><a href=\"#\" on-click=\"@.fire('goto', 'HOME')\">Home</a></li>\n\t\t\t\t\t<li class=\"nav--dash__item\"><span>/</span></li>\n\t\t\t\t\t<li class=\"nav--dash__item\"><a href=\"#\" on-click=\"@.fire('goto', 'SIGNOUT')\">Sign out</a></li>\n\t\t\t\t</ul>\n\t\t\t</nav>\n\n\t\t\t{{#if page == 'HOME'}}\n\t\t\t\t<div class=\"filter--simple\">\n\t\t\t\t\t<input  class=\"filter--simple__keyword\" type='text' placeholder='Enter your keyword' value=\"{{searchBy}}\"/>\n\t\t\t\t</div>\n\t\t\t{{/if}}\t\n\t\t{{/signed}}\n\n\t\t{{#if page == 'SIGNIN'}}\n\t\t\t<app-signin-form/>\n\t\t{{elseif page == 'SIGNOUT'}}\n\t\t\t<app-signout-form/>\n\t\t{{elseif page == 'ADD'}}\n\t\t\t<app-add-new-form/>\n\t\t{{else}}\n\t\t\t<app-phonebook-list searchBy=\"{{searchBy}}\"/>\n\t\t{{/if}}\n\t</div>\n\n\t{{#signed}}\n\t\t<a class=\"btn btn--circle is-fixed_on_bottom\" href=\"#\" on-click=\"@.fire('goto', 'ADD')\">+</a>\n\t{{/signed}}\n</section>\n<app-footer/>");
 
 /***/ }),
 
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signup\">\n    <form class=\"frm_signup frm\" on-submit=\"signup\">\n        <div class='frm_control'>\n            <p>\n                <label for=\"email\">Email</label>\n                <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for=\"password\">Password</label>\n                <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n            </p>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <button class=\"btn\" type=\"submit\">Signup</button>\n            </p>\n        </div>\n    </form>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>\n    <div class=\"row\">\n        <div class=\"column column-25\">\n            <form on-submit=\"signup\">\n                <div>\n                    <div>\n                        <label for=\"email\">Email</label>\n                        <input id=\"email\" type=\"email\" value=\"{{email}}\"/>\n                    </div>\n                </div>\n                <div>\n                    <div>\n                        <label for=\"password\">Password</label>\n                        <input id=\"password\" type=\"password\" value=\"{{password}}\"/>\n                    </div>\n                </div>\n                <div>\n                    <div>\n                        <button type=\"submit\">Signup</button>\n                    </div>\n                </div>\n            </form>\n        </div>\n    </div>\n</section>\n");
 
 /***/ }),
 
@@ -332,7 +332,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"signout\">\n    <h2>Are you sure ?</h2>\n    <button class=\"btn\" on-click=\"confirm\">Yes</button>\n    <button class=\"btn btn-solid\" on-click=\"cancel\">No</button>\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>    \n    <h4>Are you sure ?</h4>\n    <p>A good-bye is never painful unless you’re never going to say hello again.</p>\n    <button on-click=\"confirm\">Yes</button>\n    <button class=\"button button-outline\" on-click=\"cancel\">No</button>        \n</section>");
 
 /***/ }),
 
@@ -366,7 +366,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer\">\n    <div class=\"wrap\">\n        <p>Made with <img src=\"/images/heart.svg\"/> ft. cafein!</p>\n    </div>\n</footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"footer footer--bg\">\n    <div class=\"container\">\n        <p class=\"copyright--mixed\">Made with <img class=\"copyright--mixed__icon\" src=\"/images/heart.svg\"/> ft. cafein!</p>\n    </div>\n</footer>\n");
 
 /***/ }),
 
@@ -400,7 +400,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n    <div class=\"wrap\">\n        <h1>Phonebook</h1>    \n    </div>\n</header>");
+/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header header--bg\">\n    <div class=\"container\">\n        <h1 class=\"site_name site_name--md\">Phonebook</h1>    \n    </div>\n</header>");
 
 /***/ }),
 
@@ -489,7 +489,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class='add-new'>\n    <form class='frm_add_new frm' on-submit='submit'>\n        <div class='frm_control'>\n            <p>\n                <label for='name'>Name</label>\n                <input id='name' type='text' value='{{name}}'/>      \n            </p>\n            <app-error errors='{{errors.name}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='email'>Email</label>\n                <input id='email' type='email' value='{{email}}'/>\n            </p>\n            <app-error errors='{{errors.email}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='phone'>Phone</label>\n                <input id='phone' type='phone' value='{{phone}}'/>\n            </p>\n            <app-error errors='{{errors.phone}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='address'>Address</label>\n                <input id='address' type='text' value='{{address}}'/>\n            </p>\n            <app-error errors='{{errors.address}}'/>\n        </div>\n        <div class='frm_control'>\n            <p>\n                <label for='about'>About</label>\n                <textarea id='about'>{{about}}</textarea>\n            </p>\n        </div>\n        <div class='frm_control'>                        \n            <button class='btn' type='submit'>Submit</button>\n        </div>\n    </form>\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>\n    <div class=\"row\">\n        <div class=\"column column-50\">\n            <form on-submit='submit'>\n                <div>\n                    <div>\n                        <label for='name'>Name</label>\n                        <input id='name' type='text' value='{{name}}'/>      \n                    </div>\n                    <app-error errors='{{errors.name}}'/>\n                </div>\n                <div>\n                    <div>\n                        <label for='email'>Email</label>\n                        <input id='email' type='email' value='{{email}}'/>\n                    </div>\n                    <app-error errors='{{errors.email}}'/>\n                </div>\n                <div>\n                    <div>\n                        <label for='phone'>Phone</label>\n                        <input id='phone' type='number' value='{{phone}}'/>\n                    </div>\n                    <app-error errors='{{errors.phone}}'/>\n                </div>\n                <div>\n                    <div>\n                        <label for='address'>Address</label>\n                        <input id='address' type='text' value='{{address}}'/>\n                    </div>\n                    <app-error errors='{{errors.address}}'/>\n                </div>\n                <div>\n                    <div>\n                        <label for='about'>About</label>\n                        <textarea id='about'>{{about}}</textarea>\n                    </div>\n                </div>\n                <div>                        \n                    <button type='submit'>Submit</button>\n                </div>\n            </form>\n        </div>\n    </div>\n</section>");
 
 /***/ }),
 
@@ -565,7 +565,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"phonebooks\">\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{avatar(_id)}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>\n    {{#items}}\n        {{^isHide}}\n            <article class=\"person\">\n                <h3>{{name}}</h3>\n                <div class=\"person__detail\">\n                    <div>\n                        <img src=\"{{avatar(_id)}}\"/>\n                    </div>\n                    <div>                    \n                        <p>Phone: {{phone}}</p>\n                        <p>Email: <a href=\"mailto:{{email}}\">{{email}}</a></p>                    \n                        <p>Address: {{address}}</p>\n                    </div>\n                </div>\n                <p>{{about}}</p>         \n            </article>\n        {{/isHide}}\n    {{/items}}\n</section>");
 
 /***/ }),
 
@@ -600,7 +600,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"errors\">\n    {{#errors}}\n        <li>{{.}}</li>    \n    {{/errors}}\n</ul>");
+/* harmony default export */ __webpack_exports__["default"] = ("{{#if errors}}\n    <ul class=\"errors\">\n        {{#errors}}\n            <li>{{.}}</li>    \n        {{/errors}}\n    </ul>\n{{/if}}");
 
 /***/ }),
 

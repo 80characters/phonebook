@@ -1,41 +1,45 @@
-<section class='add-new'>
-    <form class='frm_add_new frm' on-submit='submit'>
-        <div class='frm_control'>
-            <p>
-                <label for='name'>Name</label>
-                <input id='name' type='text' value='{{name}}'/>      
-            </p>
-            <app-error errors='{{errors.name}}'/>
+<section>
+    <div class="row">
+        <div class="column column-50">
+            <form on-submit='submit'>
+                <div>
+                    <div>
+                        <label for='name'>Name</label>
+                        <input id='name' type='text' value='{{name}}'/>      
+                    </div>
+                    <app-error errors='{{errors.name}}'/>
+                </div>
+                <div>
+                    <div>
+                        <label for='email'>Email</label>
+                        <input id='email' type='email' value='{{email}}'/>
+                    </div>
+                    <app-error errors='{{errors.email}}'/>
+                </div>
+                <div>
+                    <div>
+                        <label for='phone'>Phone</label>
+                        <input id='phone' type='number' value='{{phone}}'/>
+                    </div>
+                    <app-error errors='{{errors.phone}}'/>
+                </div>
+                <div>
+                    <div>
+                        <label for='address'>Address</label>
+                        <input id='address' type='text' value='{{address}}'/>
+                    </div>
+                    <app-error errors='{{errors.address}}'/>
+                </div>
+                <div>
+                    <div>
+                        <label for='about'>About</label>
+                        <textarea id='about'>{{about}}</textarea>
+                    </div>
+                </div>
+                <div>                        
+                    <button type='submit'>Submit</button>
+                </div>
+            </form>
         </div>
-        <div class='frm_control'>
-            <p>
-                <label for='email'>Email</label>
-                <input id='email' type='email' value='{{email}}'/>
-            </p>
-            <app-error errors='{{errors.email}}'/>
-        </div>
-        <div class='frm_control'>
-            <p>
-                <label for='phone'>Phone</label>
-                <input id='phone' type='phone' value='{{phone}}'/>
-            </p>
-            <app-error errors='{{errors.phone}}'/>
-        </div>
-        <div class='frm_control'>
-            <p>
-                <label for='address'>Address</label>
-                <input id='address' type='text' value='{{address}}'/>
-            </p>
-            <app-error errors='{{errors.address}}'/>
-        </div>
-        <div class='frm_control'>
-            <p>
-                <label for='about'>About</label>
-                <textarea id='about'>{{about}}</textarea>
-            </p>
-        </div>
-        <div class='frm_control'>                        
-            <button class='btn' type='submit'>Submit</button>
-        </div>
-    </form>
+    </div>
 </section>

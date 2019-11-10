@@ -1,19 +1,21 @@
 <app-header/>
-<section class='app'>
-	<div class='wrap' id='{{page}}'>
 
-		{{#signed}}
-			<nav class='nav'>
-				{{#if page == 'HOME'}}
-					<input class="search" type='text' placeholder='Enter your keyword' value="{{searchBy}}"/>
-				{{/if}}
-
-				<ul>
-					<li><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
-					<li><span>/</span></li>
-					<li><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
+<section class="main_content main_content--fullwidth">
+	<div class='container'>
+		{{#signed}}	
+			<nav class="nav--primary">			
+				<ul class="nav--dash">
+					<li class="nav--dash__item"><a href="#" on-click="@.fire('goto', 'HOME')">Home</a></li>
+					<li class="nav--dash__item"><span>/</span></li>
+					<li class="nav--dash__item"><a href="#" on-click="@.fire('goto', 'SIGNOUT')">Sign out</a></li>
 				</ul>
 			</nav>
+
+			{{#if page == 'HOME'}}
+				<div class="filter--simple">
+					<input  class="filter--simple__keyword" type='text' placeholder='Enter your keyword' value="{{searchBy}}"/>
+				</div>
+			{{/if}}	
 		{{/signed}}
 
 		{{#if page == 'SIGNIN'}}
@@ -28,7 +30,7 @@
 	</div>
 
 	{{#signed}}
-		<a class="btn_new" href="#" on-click="@.fire('goto', 'ADD')">+</a>
+		<a class="btn btn--circle is-fixed_on_bottom" href="#" on-click="@.fire('goto', 'ADD')">+</a>
 	{{/signed}}
 </section>
 <app-footer/>

@@ -1,5 +1,7 @@
-<ul class="errors">
-    {{#errors}}
-        <li>{{.}}</li>    
-    {{/errors}}
-</ul>
+{{#if errors}}
+    <ul class="errors">
+        {{#errors}}
+            <li>{{.}}</li>    
+        {{/errors}}
+    </ul>
+{{/if}}

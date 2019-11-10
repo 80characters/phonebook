@@ -1,21 +1,25 @@
-<section class="signup">
-    <form class="frm_signup frm" on-submit="signup">
-        <div class='frm_control'>
-            <p>
-                <label for="email">Email</label>
-                <input id="email" type="email" value="{{email}}"/>
-            </p>
+<section>
+    <div class="row">
+        <div class="column column-25">
+            <form on-submit="signup">
+                <div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" value="{{email}}"/>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input id="password" type="password" value="{{password}}"/>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button type="submit">Signup</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class='frm_control'>
-            <p>
-                <label for="password">Password</label>
-                <input id="password" type="password" value="{{password}}"/>
-            </p>
-        </div>
-        <div class='frm_control'>
-            <p>
-                <button class="btn" type="submit">Signup</button>
-            </p>
-        </div>
-    </form>
+    </div>
 </section>

@@ -20,21 +20,41 @@ body
     padding: 0
     font-family: $font-text
 
-.wrap
-    max-width: 960px
-    width: 100%
-    margin: 0 auto
-    font-size: 13px
-
 a
     color: $color-link
     transition: 0.25s
-    
     &:hover
         color: $color-hover
 
+.filter
+    &--simple
+        &__keyword
+            margin-bottom: $space
 
-@media only screen and (max-width: 767px)
-    .wrap
-        padding-left: 30px
-        padding-right: 30px
+.nav    
+    &--dash
+        @include clearfix()
+        list-style: none
+        display: flex
+        border-bottom: 2px solid $color-highlight
+
+        &__item
+            margin-right: 5px
+
+
+.btn
+    &--circle 
+        display: block
+        height: $space-md
+        width: $space-md   
+        background: $color-link
+        color: $color-light
+        border-radius: 50%
+        overflow: hidden
+        text-align: center
+        line-height: $space-md 
+        
+        &.is-fixed_on_bottom
+            position: fixed            
+            bottom: $space-sm
+            right: $space-sm
