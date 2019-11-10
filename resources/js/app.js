@@ -1,10 +1,12 @@
 'use strict';
 
 import Ractive from 'ractive';
-import phonebookList from './components/phonebook/list/list';
-const signInForm = require('./components/auth/signin/signin');
-const signOutForm = require('./components/auth/signout/signout');
-const addNewForm = require('./components/phonebook/addnew/addnew');
+import appPhonebookList from './components/phonebook/list/list';
+import appHeader from './components/header/header';
+import appFooter from './components/footer/footer';
+import appSignInForm from './components/auth/signin/signin';
+import appSignOutForm from './components/auth/signout/signout';
+import appAddNewForm from './components/phonebook/addnew/addnew';
 
 new Ractive({
     target: '#application',
@@ -14,18 +16,18 @@ new Ractive({
         page: PAGE
     },
     components: {
-        'app-header': require('./components/header/header'),
-        'app-footer': require('./components/footer/footer'),
-        'app-phonebook-list': phonebookList,
-        'app-signin-form': signInForm,
-        'app-signout-form': signOutForm,
-        'app-add-new-form': addNewForm
+        'app-header': appHeader,
+        'app-footer': appFooter,
+        'app-phonebook-list': appPhonebookList,
+        'app-signin-form': appSignInForm,
+        'app-signout-form': appSignOutForm,
+        'app-add-new-form': appAddNewForm
     },
     on: {
-        goto: function (ctx, page) {            
+        goto: function (ctx, page) {
             if (!page) {
                 return;
-            }        
+            }
             this.set('page', page);
 
             return false;

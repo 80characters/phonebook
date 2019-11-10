@@ -1,3 +1,5 @@
+'use strict';
+
 import _ from 'lodash';
 import Ractive from 'ractive';
 import service from '../../../services/phonebooks';

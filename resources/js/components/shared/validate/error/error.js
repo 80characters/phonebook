@@ -1,3 +1,5 @@
+'use strict';
+
 import Ractive from 'ractive';
 import template from './error.mustache';
 

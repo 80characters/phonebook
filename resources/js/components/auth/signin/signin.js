@@ -1,3 +1,5 @@
+'use strict';
+
 import Ractive from 'ractive';
 import swal from 'sweetalert2';
 import service from '../../../services/auth';

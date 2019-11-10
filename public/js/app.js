@@ -177,16 +177,19 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
 /* harmony import */ var _components_phonebook_list_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/phonebook/list/list */ "./resources/js/components/phonebook/list/list.js");
+/* harmony import */ var _components_header_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js");
+/* harmony import */ var _components_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js");
+/* harmony import */ var _components_auth_signin_signin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/auth/signin/signin */ "./resources/js/components/auth/signin/signin.js");
+/* harmony import */ var _components_auth_signout_signout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/auth/signout/signout */ "./resources/js/components/auth/signout/signout.js");
+/* harmony import */ var _components_phonebook_addnew_addnew__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/phonebook/addnew/addnew */ "./resources/js/components/phonebook/addnew/addnew.js");
 
 
 
 
 
-var signInForm = __webpack_require__(/*! ./components/auth/signin/signin */ "./resources/js/components/auth/signin/signin.js");
 
-var signOutForm = __webpack_require__(/*! ./components/auth/signout/signout */ "./resources/js/components/auth/signout/signout.js");
 
-var addNewForm = __webpack_require__(/*! ./components/phonebook/addnew/addnew */ "./resources/js/components/phonebook/addnew/addnew.js");
+
 
 new ractive__WEBPACK_IMPORTED_MODULE_0__["default"]({
   target: '#application',
@@ -196,12 +199,12 @@ new ractive__WEBPACK_IMPORTED_MODULE_0__["default"]({
     page: PAGE
   },
   components: {
-    'app-header': __webpack_require__(/*! ./components/header/header */ "./resources/js/components/header/header.js"),
-    'app-footer': __webpack_require__(/*! ./components/footer/footer */ "./resources/js/components/footer/footer.js"),
+    'app-header': _components_header_header__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'app-footer': _components_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"],
     'app-phonebook-list': _components_phonebook_list_list__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'app-signin-form': signInForm,
-    'app-signout-form': signOutForm,
-    'app-add-new-form': addNewForm
+    'app-signin-form': _components_auth_signin_signin__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'app-signout-form': _components_auth_signout_signout__WEBPACK_IMPORTED_MODULE_5__["default"],
+    'app-add-new-form': _components_phonebook_addnew_addnew__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   on: {
     "goto": function goto(ctx, page) {
@@ -243,6 +246,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _services_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth */ "./resources/js/services/auth.js");
+
+
 
 
 
@@ -298,6 +303,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   template: _signout_mustache__WEBPACK_IMPORTED_MODULE_2__["default"],
   on: {
@@ -342,6 +349,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.mustache */ "./resources/js/components/footer/footer.mustache");
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   template: _footer_mustache__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
@@ -372,6 +381,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ractive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ractive */ "./node_modules/ractive/ractive.mjs");
 /* harmony import */ var _header_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header.mustache */ "./resources/js/components/header/header.mustache");
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
@@ -411,6 +422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_phonebooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/phonebooks */ "./resources/js/services/phonebooks.js");
 /* harmony import */ var _addnew_mustache__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./addnew.mustache */ "./resources/js/components/phonebook/addnew/addnew.mustache");
 /* harmony import */ var _shared_validate_error_error__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../shared/validate/error/error */ "./resources/js/components/shared/validate/error/error.js");
+
+
 
 
 
@@ -498,6 +511,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
   template: _list_mustache__WEBPACK_IMPORTED_MODULE_3__["default"],
   data: {
@@ -567,6 +582,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _error_mustache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error.mustache */ "./resources/js/components/shared/validate/error/error.mustache");
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = (ractive__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   template: _error_mustache__WEBPACK_IMPORTED_MODULE_1__["default"],
   data: {}
@@ -596,6 +613,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   form: {
     addNew: {

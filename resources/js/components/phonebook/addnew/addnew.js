@@ -1,3 +1,5 @@
+'use strict';
+
 import Ractive from 'ractive';
 import validate from 'validate.js';
 import swal from 'sweetalert2';

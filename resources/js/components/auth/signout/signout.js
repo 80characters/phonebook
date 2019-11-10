@@ -1,3 +1,5 @@
+'use strict';
+
 import Ractive from 'ractive';
 import service from '../../../services/auth';
 import template from './signout.mustache';
