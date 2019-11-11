@@ -12,8 +12,8 @@ exports.requires = [
 	'@body-parser',
 	'@cors',
 	'@helmet',
-	'@http-errors',
-	'@mongoose',
+	'@http-errors',	
+	'services.connection',
 	'middlewares.errors-handle',
 	'routes.index',
 	'routes.auth',
@@ -31,18 +31,13 @@ exports.factory = function (
 	cors,
 	helmet,
 	createError,
-	mongoose,
+	connecter,
 	midErrorsHandle,
 	indexRouter,
 	authRouter,
-	phonebooksRouter) {
-
-	env.config();
-
-	mongoose.connect(process.env.MONGODB_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	});
+	phonebooksRouter) {	
+		
+	connecter.connect();
 
 	const app = express();
 	app.use(logger('combined'));
@@ -51,7 +46,7 @@ exports.factory = function (
 	app.use(cookieParser());
 	app.use(session({
 		secret: process.env.SESSION_KEY,
-		cookie: { maxAge: 60000 * 30 },		
+		cookie: { maxAge: 60000 * 30 },
 		saveUninitialized: true,
 		resave: true
 	}));
@@ -71,7 +66,7 @@ exports.factory = function (
 	app.use(helmet());
 
 	// Register routers.
-	app.use('/', indexRouter);	
+	app.use('/', indexRouter);
 	app.use('/auth/', authRouter);
 	app.use('/', phonebooksRouter);
 
