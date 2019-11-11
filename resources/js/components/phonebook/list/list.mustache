@@ -1,19 +1,19 @@
-<section class="contact_list--card">
+<section class="contacts">
     {{#items}}
         {{^isHide}}
-            <article class="person">
-                <h3>{{name}}</h3>
-                <div class="person__detail">
-                    <div>
-                        <img src="{{avatar(_id)}}"/>
+            <article class="contact contact--card">
+                <h3 class="contact--card__name">{{name}}</h3>
+                <div class="contact--card__box">
+                    <div class="contact--card__avatar avatar--square">
+                        <img class="avatar--square__image" src="{{avatar(_id)}}"/>
                     </div>
-                    <div>                    
-                        <p>Phone: {{phone}}</p>
-                        <p>Email: <a href="mailto:{{email}}">{{email}}</a></p>                    
-                        <p>Address: {{address}}</p>
+                    <div class="contact--card__summary">                    
+                        <p class="contact--card__line">Phone: {{phone}}</p>
+                        <p class="contact--card__line">Email: <a href="mailto:{{email}}">{{email}}</a></p>                    
+                        <p class="contact--card__line">Address: {{address}}</p>
                     </div>
                 </div>
-                <p>{{about}}</p>         
+                <p class="contact--card__excerpt">{{about}}</p>         
             </article>
         {{/isHide}}
     {{/items}}
